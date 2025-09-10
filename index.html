@@ -6,12 +6,13 @@
     <title>Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            text-align: left;
         }
         
         body {
@@ -59,14 +60,74 @@
             gap: 20px;
         }
         
+        .carousel-container {
+            display: none;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel {
+            overflow: hidden;
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel .project {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+        
+        .carousel-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            margin: 0px;
+        }
+        
+        .carousel-btn img {
+            width: 50px;
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+        
+        @media (max-width: 768px) {
+            .projects {
+                display: none;
+            }
+            
+            .carousel-container {
+                display: flex;
+            }
+        }
+        
         .project {
-            background: #2d2d2d;
-            padding: 20px;
+            padding: 10px;
             border-radius: 5px;
+            text-align: center;
+        }
+        
+        .project img {
+            width: 100%;
+            margin-bottom: 15px;
         }
         
         .project h3 {
             margin-bottom: 10px;
+            font-family: 'Kreon', serif;
+            font-size: 30px;
+            font-weight: 100;
+        }
+        
+        .project p {
+            font-family: 'Geologica', sans-serif;
+            font-weight: 400;
         }
         
         nav {
@@ -97,9 +158,16 @@
         
         footer {
             text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
+            margin-top: 70px;
+            padding-top: 40px;
             border-top: 1px solid #555;
+        }
+        
+        footer p {
+            font-family: 'Koulen', sans-serif;
+            letter-spacing: 0.45em;
+            text-align: center;
+            opacity: 0.5;
         }
     </style>
 </head>
@@ -120,17 +188,48 @@
         <section class="section">
             <div class="projects">
                 <div class="project">
-                    <h3>Project 1</h3>
-                    <p>Description of your first project.</p>
+                    <img src="graphics/marquee.svg" alt="Project 1">
+                    <h3>Case Study #1</h3>
+                    <p>I'm baby sartorial fixie man braid street art pour-over letterpress. Everyday carry portland tumblr leggings tbh plaid, master cleanse umami.</p>
                 </div>
                 <div class="project">
-                    <h3>Project 2</h3>
-                    <p>Description of your second project.</p>
+                    <img src="graphics/marquee.svg" alt="Project 2">
+                    <h3>Case Study #2</h3>
+                    <p>Plaid austin DSA heirloom. Authentic chia brunch vape, mixtape keytar jawn hoodie cloud bread sriracha tattooed pork belly. Franzen same raw denim keytar portland.</p>
                 </div>
                 <div class="project">
-                    <h3>Project 3</h3>
-                    <p>Description of your third project.</p>
+                    <img src="graphics/marquee.svg" alt="Project 3">
+                    <h3>Case Study #3</h3>
+                    <p>Williamsburg mukbang cupping art party synth biodiesel woke. Chartreuse woke ramps, whatever coloring book chillwave fam.</p>
                 </div>
+            </div>
+            
+            <div class="carousel-container">
+                <button class="carousel-btn" id="prevBtn">
+                    <img src="graphics/arrowleft.svg" alt="Previous">
+                </button>
+                <div class="carousel">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="project">
+                            <img src="graphics/marquee.svg" alt="Project 1">
+                            <h3>Project 1</h3>
+                            <p>Description of your first project.</p>
+                        </div>
+                        <div class="project">
+                            <img src="graphics/marquee.svg" alt="Project 2">
+                            <h3>Project 2</h3>
+                            <p>Description of your second project.</p>
+                        </div>
+                        <div class="project">
+                            <img src="graphics/marquee.svg" alt="Project 3">
+                            <h3>Project 3</h3>
+                            <p>Description of your third project.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn" id="nextBtn">
+                    <img src="graphics/arrowright.svg" alt="Next">
+                </button>
             </div>
         </section>
         
@@ -138,5 +237,58 @@
             <p>&copy; 2025 Jamison Orten. All rights reserved.</p>
         </footer>
     </div>
+    
+    <script>
+        let currentSlide = 0;
+        const carouselTrack = document.getElementById('carouselTrack');
+        const projects = carouselTrack.querySelectorAll('.project');
+        const totalSlides = projects.length;
+        
+        function updateCarousel() {
+            const translateX = -currentSlide * 100;
+            carouselTrack.style.transform = `translateX(${translateX}%)`;
+        }
+        
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        });
+        
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+        
+        // Touch/swipe support
+        let startX = 0;
+        let isDragging = false;
+        
+        carouselTrack.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+        
+        carouselTrack.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        });
+        
+        carouselTrack.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            
+            const endX = e.changedTouches[0].clientX;
+            const diffX = startX - endX;
+            
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                } else {
+                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                }
+                updateCarousel();
+            }
+            
+            isDragging = false;
+        });
+    </script>
 </body>
 </html>
