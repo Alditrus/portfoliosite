@@ -97,7 +97,7 @@
             filter: brightness(0) invert(1);
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 980px) {
             .projects {
                 display: none;
             }
@@ -160,7 +160,18 @@
             text-align: center;
             margin-top: 70px;
             padding-top: 40px;
-            border-top: 1px solid #555;
+            border-top: 3px solid transparent;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, rgba(85, 85, 85, 0), #555, rgba(85, 85, 85, 0));
         }
         
         footer p {

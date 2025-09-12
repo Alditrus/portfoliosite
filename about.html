@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: left;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: white;
+            background-color: #0A0A0A;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        
+        nav {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-evenly;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Koulen', sans-serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.45em;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ccc;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .about-text h2 {
+            font-family: 'Koulen', sans-serif;
+            font-size: 50px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 0.10em;
+        }
+        
+        .about-text p {
+            font-family: 'Geologica', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .about-image {
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .about-image .frame {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-image .portrait {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 70px;
+            padding-top: 40px;
+            border-top: 3px solid transparent;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, rgba(85, 85, 85, 0), #555, rgba(85, 85, 85, 0));
+        }
+        
+        footer p {
+            font-family: 'Koulen', sans-serif;
+            letter-spacing: 0.45em;
+            text-align: center;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="graphics/JO_neon.svg" alt="JO" style="max-width: auto; height: 70px; margin-bottom: 10px; margin-top: 10px; filter: brightness(0) invert(1);">
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <section class="section">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="graphics/portrait.jpg" alt="Jamison Orten" class="portrait">
+                    <img src="graphics/picture_frame.png" alt="Frame" class="frame">
+                </div>
+                <div class="about-text">
+                    <h2>I'm Jamison Orten</h2>
+                    <p>I'm baby meh leggings letterpress deep v, bicycle rights flannel jawn four dollar toast mustache vinyl iceland DIY. Lo-fi coloring book typewriter marfa fixie photo booth man braid paleo. Farm-to-table raw denim paleo tousled gluten-free plaid. Synth waistcoat dreamcatcher pabst succulents copper mug. Williamsburg tattooed cold-pressed intelligentsia four dollar toast DSA tote bag locavore austin pickled keytar bruh. YOLO aesthetic ennui pour-over, +1 hell of green juice. Man bun kombucha narwhal biodiesel.</p>
+                    <br>
+                    <p>Chillwave polaroid viral single-origin coffee mukbang, venmo butcher food truck listicle plaid iPhone tumblr. Blue bottle vice sriracha, cloud bread green juice neutral milk hotel tumblr twee. Synth health goth mixtape iceland tattooed venmo. Wolf VHS marfa, echo park same wayfarers shoreditch hoodie iceland tbh. Twee biodiesel pitchfork, pabst vape air plant unicorn poutine.</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 Jamison Orten. All rights reserved.</p>
+        </footer>
+    </div>
+    
+</body>
+</html>
