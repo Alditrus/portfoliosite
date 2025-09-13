@@ -31,6 +31,27 @@
         header {
             text-align: center;
             margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hamburger-menu {
+            display: none;
+            position: absolute;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            background: none;
+            border: none;
+            padding-bottom: 5px;
+        }
+
+        .hamburger-menu img {
+            width: 30px;
+            height: 25px;
+            filter: brightness(0) invert(1);
         }
         
         h1 {
@@ -98,10 +119,18 @@
         }
         
         @media (max-width: 980px) {
+            .hamburger-menu {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
             .projects {
                 display: none;
             }
-            
+
             .carousel-container {
                 display: flex;
             }
@@ -155,6 +184,42 @@
         nav a:hover {
             color: #ccc;
         }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Koulen', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.45em;
+            transition: color 0.3s;
+        }
         
         footer {
             text-align: center;
@@ -185,16 +250,27 @@
 <body>
     <div class="container">
         <header>
+            <button class="hamburger-menu" id="hamburgerBtn">
+                <img src="graphics/hamburger.svg" alt="Menu">
+            </button>
             <img src="graphics/JO_neon.svg" alt="JO" style="max-width: auto; height: 70px; margin-bottom: 10px; margin-top: 10px; filter: brightness(0) invert(1);">
         </header>
-        
-        <nav>
+
+        <nav id="mainNav">
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#work">Work</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
         
         <section class="section">
             <div class="projects">
@@ -250,6 +326,30 @@
     </div>
     
     <script>
+        // Hamburger menu functionality
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+        });
+
+        // Close mobile nav when clicking on a link
+        const mobileNavLinks = mobileNav.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // Close mobile nav when clicking outside
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+        });
+
+        // Carousel functionality
         let currentSlide = 0;
         const carouselTrack = document.getElementById('carouselTrack');
         const projects = carouselTrack.querySelectorAll('.project');
