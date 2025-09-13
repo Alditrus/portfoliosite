@@ -46,8 +46,8 @@
         }
 
         .hamburger svg {
-            width: 30px;
-            height: 25px;
+            width: 40px;
+            height: 35px;
         }
         
         h1 {
@@ -92,7 +92,6 @@
         }
 
         .mobile-nav {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -100,13 +99,18 @@
             height: 100%;
             background-color: rgba(10, 10, 10, 0.95);
             z-index: 999;
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .mobile-nav.active {
-            display: flex;
+            opacity: 1;
+            visibility: visible;
         }
 
         .mobile-nav ul {
@@ -114,6 +118,10 @@
             display: flex;
             flex-direction: column;
             gap: 40px;
+            text-align: center;
+        }
+
+        .mobile-nav li {
             text-align: center;
         }
 
