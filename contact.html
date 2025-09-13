@@ -255,6 +255,70 @@
             display: block;
             font-size: 24px;
         }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            margin-bottom: 100px;
+        }
+
+        .contact-header h2 {
+            font-family: 'Koulen', sans-serif;
+            font-size: 60px;
+            font-weight: 300;
+            letter-spacing: 0.10em;
+            margin: 0;
+        }
+
+        .mail-left, .mail-right {
+            width: 150px;
+            height: auto;
+            filter: drop-shadow(0 0 5px #33FF00) drop-shadow(0 0 10px #33FF00);
+        }
+
+        .mail-left {
+            transform: rotate(-30deg);
+        }
+
+        .mail-right {
+            transform: rotate(30deg);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 150px !important;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 150px;
+            height: 150px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-icon:first-child {
+            filter: brightness(0) saturate(100%) invert(64%) sepia(26%) saturate(1847%) hue-rotate(192deg) brightness(96%) contrast(97%) drop-shadow(0 0 10px #0381ffff);
+        }
+
+        .social-icon:nth-child(2) {
+            filter: brightness(0) saturate(100%) invert(79%) sepia(15%) saturate(1234%) hue-rotate(224deg) brightness(95%) contrast(98%) drop-shadow(0 0 10px #4316ffff);
+        }
+
+        .social-icon:nth-child(3) {
+            filter: brightness(0) saturate(100%) invert(78%) sepia(37%) saturate(1456%) hue-rotate(261deg) brightness(97%) contrast(98%) drop-shadow(0 0 10px #ba0bffff);
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+            filter: brightness(0) invert(1) drop-shadow(0 0 10px #ffffff);
+        }
         
         @media (max-width: 980px) {
             nav {
@@ -283,6 +347,29 @@
 
             .experience-education h2 {
                 text-align: center;
+            }
+
+            .contact-header {
+                margin-top: 50px;
+                margin-bottom: 50px;
+                gap: 20px;
+            }
+
+            .contact-header h2 {
+                font-size: 40px;
+            }
+
+            .mail-left, .mail-right {
+                width: 60px;
+            }
+
+            .social-icons {
+                gap: 25px;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
             }
         }
         
@@ -342,48 +429,15 @@
         </div>
         
         <section class="section">
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="graphics/portrait.jpg" alt="Jamison Orten" class="portrait">
-                    <img src="graphics/picture_frame.png" alt="Frame" class="frame">
-                </div>
-                <div class="about-text">
-                    <h2>I'm Jamison Orten</h2>
-                    <p>I'm baby meh leggings letterpress deep v, bicycle rights flannel jawn four dollar toast mustache vinyl iceland DIY. Lo-fi coloring book typewriter marfa fixie photo booth man braid paleo. Farm-to-table raw denim paleo tousled gluten-free plaid. Synth waistcoat dreamcatcher pabst succulents copper mug. Williamsburg tattooed cold-pressed intelligentsia four dollar toast DSA tote bag locavore austin pickled keytar bruh. YOLO aesthetic ennui pour-over, +1 hell of green juice. Man bun kombucha narwhal biodiesel.</p>
-                    <br>
-                    <p>Chillwave polaroid viral single-origin coffee mukbang, venmo butcher food truck listicle plaid iPhone tumblr. Blue bottle vice sriracha, cloud bread green juice neutral milk hotel tumblr twee. Synth health goth mixtape iceland tattooed venmo. Wolf VHS marfa, echo park same wayfarers shoreditch hoodie iceland tbh. Twee biodiesel pitchfork, pabst vape air plant unicorn poutine.</p>
-                </div>
+            <div class="contact-header">
+                <img src="graphics/flying_mail.svg" alt="Flying mail" class="mail-left">
+                <h2>Let's Talk</h2>
+                <img src="graphics/flying_mail.svg" alt="Flying mail" class="mail-right">
             </div>
-            
-            <div class="experience-education">
-                <div>
-                    <h2>Experience</h2>
-                    <ul>
-                        <li>The Church of Jesus Christ of Latter Day Saints<br> 
-                            2019-2020
-                            <span class="subtitle">Customer Service Representative</span>
-                        </li>
-                        <li>Fidelity Investments<br>
-                            2022-Present
-                            <span class="subtitle">Customer Service Representative</span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2>Education</h2>
-                    <ul>
-                        <li>Utah Valley University<br>
-                            2016-2023
-                            <span class="subtitle">-  B.S. Psychology</span>
-                            <span class="subtitle">-  Associates Behavioral Science</span>
-                            <span class="subtitle">-  Minor Digital Design</span>
-                        </li>
-                        <li>eCornell<br>
-                            2024
-                            <span class="subtitle">Certificate in User Experience Design</span>
-                        </li>
-                    </ul>
-                </div>
+            <div class="social-icons">
+                <img src="graphics/inkedin.svg" alt="LinkedIn" class="social-icon">
+                <img src="graphics/protonmail.svg" alt="ProtonMail" class="social-icon">
+                <img src="graphics/farcaster.svg" alt="Farcaster" class="social-icon">
             </div>
         </section>
         
