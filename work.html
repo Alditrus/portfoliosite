@@ -93,6 +93,52 @@
             align-items: center;
             justify-content: center;
         }
+
+        .desktop-carousel-container {
+            display: none;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .desktop-carousel {
+            overflow: hidden;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .desktop-carousel-track {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .desktop-carousel .project {
+            width: calc(33.333% - 20px);
+            flex-shrink: 0;
+            margin: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .desktop-carousel-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            margin: 0 10px;
+        }
+
+        .desktop-carousel-btn img {
+            width: 50px;
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+
+        .desktop-carousel .project-image .project-content {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
         
         .carousel {
             overflow: hidden;
@@ -134,7 +180,11 @@
             }
 
             .projects {
-                display: none;
+                display: none !important;
+            }
+
+            .desktop-carousel-container {
+                display: none !important;
             }
 
             .carousel-container {
@@ -147,6 +197,12 @@
                 height: auto;
                 margin: 0 auto;
                 display: block;
+            }
+        }
+
+        @media (min-width: 981px) {
+            .carousel-container {
+                display: none !important;
             }
         }
         
@@ -331,6 +387,113 @@
                     <h3>Case Study #3</h3>
                     <p>Williamsburg mukbang cupping art party synth biodiesel woke. Chartreuse woke ramps, whatever coloring book chillwave fam.</p>
                 </div>
+                <div class="project">
+                    <div class="project-image">
+                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                    </div>
+                    <h3>Case Study #4</h3>
+                    <p>Flexitarian waistcoat subway tile, craft beer pickled pork belly everyday carry. Chia asymmetrical meditation, etsy tilde fixie church-key.</p>
+                </div>
+                <div class="project">
+                    <div class="project-image">
+                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                    </div>
+                    <h3>Case Study #5</h3>
+                    <p>Kombucha organic tacos, distillery man braid blue bottle skateboard put a bird on it. Shoreditch selfies chambray ethical.</p>
+                </div>
+            </div>
+
+            <div class="desktop-carousel-container" id="desktopCarouselContainer">
+                <button class="desktop-carousel-btn" id="desktopPrevBtn">
+                    <img src="graphics/arrowleft.svg" alt="Previous">
+                </button>
+                <div class="desktop-carousel">
+                    <div class="desktop-carousel-track" id="desktopCarouselTrack">
+                        <!-- Duplicate last 3 slides for infinite loop -->
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #3</h3>
+                            <p>Williamsburg mukbang cupping art party synth biodiesel woke. Chartreuse woke ramps, whatever coloring book chillwave fam.</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #4</h3>
+                            <p>Flexitarian waistcoat subway tile, craft beer pickled pork belly everyday carry. Chia asymmetrical meditation, etsy tilde fixie church-key.</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #5</h3>
+                            <p>Kombucha organic tacos, distillery man braid blue bottle skateboard put a bird on it. Shoreditch selfies chambray ethical.</p>
+                        </div>
+                        <!-- Original slides -->
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #1</h3>
+                            <p>I'm baby sartorial fixie man braid street art pour-over letterpress. Everyday carry portland tumblr leggings tbh plaid, master cleanse umami.</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #2</h3>
+                            <p>Plaid austin DSA heirloom. Authentic chia brunch vape, mixtape keytar jawn hoodie cloud bread sriracha tattooed pork belly. Franzen same raw denim keytar portland.</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #3</h3>
+                            <p>Williamsburg mukbang cupping art party synth biodiesel woke. Chartreuse woke ramps, whatever coloring book chillwave fam.</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #4</h3>
+                            <p>Flexitarian waistcoat subway tile, craft beer pickled pork belly everyday carry. Chia asymmetrical meditation, etsy tilde fixie church-key.</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #5</h3>
+                            <p>Kombucha organic tacos, distillery man braid blue bottle skateboard put a bird on it. Shoreditch selfies chambray ethical.</p>
+                        </div>
+                        <!-- Duplicate first 3 slides for infinite loop -->
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #1</h3>
+                            <p>I'm baby sartorial fixie man braid street art pour-over letterpress. Everyday carry portland tumblr leggings tbh plaid, master cleanse umami.</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #2</h3>
+                            <p>Plaid austin DSA heirloom. Authentic chia brunch vape, mixtape keytar jawn hoodie cloud bread sriracha tattooed pork belly. Franzen same raw denim keytar portland.</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #3</h3>
+                            <p>Williamsburg mukbang cupping art party synth biodiesel woke. Chartreuse woke ramps, whatever coloring book chillwave fam.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="desktop-carousel-btn" id="desktopNextBtn">
+                    <img src="graphics/arrowright.svg" alt="Next">
+                </button>
             </div>
             
             <div class="carousel-container">
@@ -414,7 +577,68 @@
             }
         });
 
-        // Carousel functionality
+        // Check if we have more than 4 projects and show appropriate carousel
+        const projectsGrid = document.querySelector('.projects');
+        const projectCount = projectsGrid.querySelectorAll('.project').length;
+        const desktopCarouselContainer = document.getElementById('desktopCarouselContainer');
+
+        if (projectCount > 4) {
+            // Hide grid and show desktop carousel
+            projectsGrid.style.display = 'none';
+            desktopCarouselContainer.style.display = 'flex';
+        }
+
+        // Desktop Carousel functionality
+        let desktopCurrentSlide = 3; // Start at first real slide (index 3, showing 3 slides)
+        const desktopCarouselTrack = document.getElementById('desktopCarouselTrack');
+        const desktopProjects = desktopCarouselTrack.querySelectorAll('.project');
+        const desktopTotalSlides = desktopProjects.length;
+        const desktopRealSlides = 5; // Number of actual unique slides
+
+        function updateDesktopCarousel(instant = false) {
+            // Show 3 slides at a time, so translate by 33.333% per slide
+            const translateX = -desktopCurrentSlide * (100/3);
+            if (instant) {
+                desktopCarouselTrack.style.transition = 'none';
+                desktopCarouselTrack.style.transform = `translateX(${translateX}%)`;
+                // Force reflow
+                desktopCarouselTrack.offsetHeight;
+                desktopCarouselTrack.style.transition = 'transform 0.3s ease';
+            } else {
+                desktopCarouselTrack.style.transform = `translateX(${translateX}%)`;
+            }
+        }
+
+        function handleDesktopInfiniteLoop() {
+            if (desktopCurrentSlide <= 2) {
+                // Jump to last real slides without animation
+                desktopCurrentSlide = desktopRealSlides + 2;
+                updateDesktopCarousel(true);
+            } else if (desktopCurrentSlide >= desktopTotalSlides - 3) {
+                // Jump to first real slides without animation
+                desktopCurrentSlide = 3;
+                updateDesktopCarousel(true);
+            }
+        }
+
+        // Set initial position for desktop carousel
+        if (projectCount > 4) {
+            updateDesktopCarousel(true);
+
+            document.getElementById('desktopNextBtn').addEventListener('click', () => {
+                desktopCurrentSlide++;
+                updateDesktopCarousel();
+                setTimeout(handleDesktopInfiniteLoop, 300);
+            });
+
+            document.getElementById('desktopPrevBtn').addEventListener('click', () => {
+                desktopCurrentSlide--;
+                updateDesktopCarousel();
+                setTimeout(handleDesktopInfiniteLoop, 300);
+            });
+        }
+
+        // Mobile Carousel functionality
         let currentSlide = 1; // Start at first real slide (index 1)
         const carouselTrack = document.getElementById('carouselTrack');
         const projects = carouselTrack.querySelectorAll('.project');
