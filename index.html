@@ -338,6 +338,16 @@
                 </button>
                 <div class="carousel">
                     <div class="carousel-track" id="carouselTrack">
+                        <!-- Duplicate last slide for infinite loop -->
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                                <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
+                            </div>
+                            <h3>Project 3</h3>
+                            <p>Description of your third project.</p>
+                        </div>
+                        <!-- Original slides -->
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
@@ -361,6 +371,15 @@
                             </div>
                             <h3>Project 3</h3>
                             <p>Description of your third project.</p>
+                        </div>
+                        <!-- Duplicate first slide for infinite loop -->
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                                <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
+                            </div>
+                            <h3>Project 1</h3>
+                            <p>Description of your first project.</p>
                         </div>
                     </div>
                 </div>
@@ -400,54 +419,81 @@
         });
 
         // Carousel functionality
-        let currentSlide = 0;
+        let currentSlide = 1; // Start at first real slide (index 1)
         const carouselTrack = document.getElementById('carouselTrack');
         const projects = carouselTrack.querySelectorAll('.project');
         const totalSlides = projects.length;
-        
-        function updateCarousel() {
+        const realSlides = 3; // Number of actual unique slides
+
+        function updateCarousel(instant = false) {
             const translateX = -currentSlide * 100;
-            carouselTrack.style.transform = `translateX(${translateX}%)`;
+            if (instant) {
+                carouselTrack.style.transition = 'none';
+                carouselTrack.style.transform = `translateX(${translateX}%)`;
+                // Force reflow
+                carouselTrack.offsetHeight;
+                carouselTrack.style.transition = 'transform 0.3s ease';
+            } else {
+                carouselTrack.style.transform = `translateX(${translateX}%)`;
+            }
         }
-        
+
+        function handleInfiniteLoop() {
+            if (currentSlide === 0) {
+                // Jump to last real slide without animation
+                currentSlide = realSlides;
+                updateCarousel(true);
+            } else if (currentSlide === totalSlides - 1) {
+                // Jump to first real slide without animation
+                currentSlide = 1;
+                updateCarousel(true);
+            }
+        }
+
+        // Set initial position
+        updateCarousel(true);
+
         document.getElementById('nextBtn').addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % totalSlides;
+            currentSlide++;
             updateCarousel();
+            setTimeout(handleInfiniteLoop, 300);
         });
-        
+
         document.getElementById('prevBtn').addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            currentSlide--;
             updateCarousel();
+            setTimeout(handleInfiniteLoop, 300);
         });
         
         // Touch/swipe support
         let startX = 0;
         let isDragging = false;
-        
+
         carouselTrack.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
             isDragging = true;
         });
-        
+
         carouselTrack.addEventListener('touchmove', (e) => {
             e.preventDefault();
         });
-        
+
         carouselTrack.addEventListener('touchend', (e) => {
             if (!isDragging) return;
-            
+
             const endX = e.changedTouches[0].clientX;
             const diffX = startX - endX;
-            
+
             if (Math.abs(diffX) > 50) {
                 if (diffX > 0) {
-                    currentSlide = (currentSlide + 1) % totalSlides;
+                    currentSlide++;
                 } else {
-                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                    currentSlide--;
                 }
                 updateCarousel();
+                setTimeout(handleInfiniteLoop, 300);
             }
-            
+
             isDragging = false;
         });
     </script>
