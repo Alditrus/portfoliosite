@@ -69,11 +69,12 @@
             font-size: 1.2rem;
             color: #ccc;
         }
+
         
         .section {
-            margin-bottom: 50px;
+            margin-bottom: 70px;
         }
-        
+
         .section h2 {
             font-size: 2rem;
             margin-bottom: 20px;
@@ -81,58 +82,84 @@
             padding-bottom: 10px;
         }
 
-        .accordion-header {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            padding: 10px 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .accordion-header:hover {
-            opacity: 0.7;
-        }
-
-        .accordion-arrow {
-            width: 20px;
-            height: 20px;
-            filter: brightness(0) invert(1);
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-header.collapsed .accordion-arrow {
-            transform: rotate(-180deg);
-        }
-
-        .accordion-header h2 {
+        .section-header h2 {
             color: white;
             text-decoration: none;
             font-family: 'Koulen', sans-serif;
-            font-size: 20px;
+            font-size: 40px;
             text-transform: uppercase;
+            text-align: center;
+            font-weight: 200;
             letter-spacing: 0.45em;
-            margin: 0;
+            margin: 0 0 20px 0;
             border: none;
             padding: 0;
         }
 
-        .projects {
-            transition: max-height 0.3s ease, opacity 0.3s ease;
-            overflow: hidden;
-        }
-
-        .projects.collapsed {
-            max-height: 0;
-            opacity: 0;
-        }
         
         .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .projects.auto-carousel {
+            display: block !important;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .projects.auto-carousel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 100%;
+            background: linear-gradient(to right, #0A0A0A, transparent);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .projects.auto-carousel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 100%;
+            background: linear-gradient(to left, #0A0A0A, transparent);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .projects.auto-carousel .carousel-track-auto {
+            display: flex;
+            width: fit-content;
+            animation: scroll-left 16s linear infinite;
             gap: 20px;
         }
+
+        .projects.auto-carousel .project {
+            min-width: 280px;
+            flex-shrink: 0;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-74%); /* change this to control reset */
+            }
+        }
+
+        .projects.auto-carousel .carousel-track-auto:hover {
+            animation-play-state: paused;
+        }
+
         
         .carousel-container {
             display: none;
@@ -347,40 +374,107 @@
         </div>
         
         <section class="section">
-            <div class="accordion-header" id="accordionHeader">
-                <img src="graphics/dropdownarrow.svg" alt="Toggle" class="accordion-arrow">
+            <div class="section-header">
                 <h2>Case Studies</h2>
             </div>
-            <div class="projects" id="projectsContent">
-                <div class="project">
-                    <div class="project-image">
-                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+            <div class="projects" id="caseStudiesProjects">
+                <div class="carousel-track-auto" id="caseStudiesTrack">
+                    <div class="project">
+                        <div class="project-image">
+                            <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                        </div>
+                        <h3>Case Study #1</h3>
                     </div>
-                    <h3>Case Study #1</h3>
-                    <p>I'm baby sartorial fixie man braid street art pour-over letterpress. Everyday carry portland tumblr leggings tbh plaid, master cleanse umami.</p>
-                </div>
-                <div class="project">
-                    <div class="project-image">
-                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                    <div class="project">
+                        <div class="project-image">
+                            <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                        </div>
+                        <h3>Case Study #2</h3>
                     </div>
-                    <h3>Case Study #2</h3>
-                    <p>Plaid austin DSA heirloom. Authentic chia brunch vape, mixtape keytar jawn hoodie cloud bread sriracha tattooed pork belly. Franzen same raw denim keytar portland.</p>
-                </div>
-                <div class="project">
-                    <div class="project-image">
-                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                    <div class="project">
+                        <div class="project-image">
+                            <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                        </div>
+                        <h3>Case Study #3</h3>
                     </div>
-                    <h3>Case Study #3</h3>
-                    <p>Williamsburg mukbang cupping art party synth biodiesel woke. Chartreuse woke ramps, whatever coloring book chillwave fam.</p>
+                    <div class="project">
+                        <div class="project-image">
+                            <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                        </div>
+                        <h3>Case Study #4</h3>
+                    </div>
                 </div>
             </div>
-            
+
             <div class="carousel-container">
                 <button class="carousel-btn" id="prevBtn">
                     <img src="graphics/arrowleft.svg" alt="Previous">
                 </button>
                 <div class="carousel">
                     <div class="carousel-track" id="carouselTrack">
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Project 1</h3>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Project 2</h3>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Project 3</h3>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Project 4</h3>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn" id="nextBtn">
+                    <img src="graphics/arrowright.svg" alt="Next">
+                </button>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Heuristic Studies</h2>
+            </div>
+            <div class="projects">
+                <div class="project">
+                    <div class="project-image">
+                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                    </div>
+                    <h3>Case Study #1</h3>
+                </div>
+                <div class="project">
+                    <div class="project-image">
+                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                    </div>
+                    <h3>Case Study #2</h3>
+                </div>
+                <div class="project">
+                    <div class="project-image">
+                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                    </div>
+                    <h3>Case Study #3</h3>
+                </div>
+            </div>
+
+            <div class="carousel-container">
+                <button class="carousel-btn" id="prevBtn2">
+                    <img src="graphics/arrowleft.svg" alt="Previous">
+                </button>
+                <div class="carousel">
+                    <div class="carousel-track" id="carouselTrack2">
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
@@ -404,18 +498,45 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-btn" id="nextBtn">
+                <button class="carousel-btn" id="nextBtn2">
                     <img src="graphics/arrowright.svg" alt="Next">
                 </button>
             </div>
         </section>
-        
+
         <footer>
             <p>&copy; 2025 Jamison Orten. All rights reserved.</p>
         </footer>
     </div>
     
     <script>
+        // Auto-carousel functionality for Case Studies
+        function initAutoCarousel() {
+            const caseStudiesContainer = document.getElementById('caseStudiesProjects');
+            const caseStudiesTrack = document.getElementById('caseStudiesTrack');
+            const originalProjects = Array.from(caseStudiesTrack.querySelectorAll('.project'));
+
+            if (originalProjects.length > 3) {
+                // Activate auto-carousel
+                caseStudiesContainer.classList.add('auto-carousel');
+
+                // Clone projects for seamless infinite scroll
+                // We need to duplicate the entire set to create seamless loop
+                const clonedProjects = originalProjects.map(project => project.cloneNode(true));
+                clonedProjects.forEach(clone => caseStudiesTrack.appendChild(clone));
+
+                // Calculate animation duration based on number of projects (4 seconds per project)
+                const animationDuration = originalProjects.length * 4;
+                caseStudiesTrack.style.animationDuration = animationDuration + 's';
+            } else {
+                // Keep as grid layout
+                caseStudiesContainer.classList.remove('auto-carousel');
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initAutoCarousel);
+
         // Hamburger menu functionality
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileNav = document.getElementById('mobileNav');
@@ -491,14 +612,59 @@
             isDragging = false;
         });
 
-        // Accordion functionality
-        const accordionHeader = document.getElementById('accordionHeader');
-        const projectsContent = document.getElementById('projectsContent');
 
-        accordionHeader.addEventListener('click', () => {
-            accordionHeader.classList.toggle('collapsed');
-            projectsContent.classList.toggle('collapsed');
+        // Second carousel functionality
+        let currentSlide2 = 0;
+        const carouselTrack2 = document.getElementById('carouselTrack2');
+        const projects2 = carouselTrack2.querySelectorAll('.project');
+        const totalSlides2 = projects2.length;
+
+        function updateCarousel2() {
+            const translateX = -currentSlide2 * 100;
+            carouselTrack2.style.transform = `translateX(${translateX}%)`;
+        }
+
+        document.getElementById('nextBtn2').addEventListener('click', () => {
+            currentSlide2 = (currentSlide2 + 1) % totalSlides2;
+            updateCarousel2();
         });
+
+        document.getElementById('prevBtn2').addEventListener('click', () => {
+            currentSlide2 = (currentSlide2 - 1 + totalSlides2) % totalSlides2;
+            updateCarousel2();
+        });
+
+        // Touch/swipe support for second carousel
+        let startX2 = 0;
+        let isDragging2 = false;
+
+        carouselTrack2.addEventListener('touchstart', (e) => {
+            startX2 = e.touches[0].clientX;
+            isDragging2 = true;
+        });
+
+        carouselTrack2.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        });
+
+        carouselTrack2.addEventListener('touchend', (e) => {
+            if (!isDragging2) return;
+
+            const endX2 = e.changedTouches[0].clientX;
+            const diffX2 = startX2 - endX2;
+
+            if (Math.abs(diffX2) > 50) {
+                if (diffX2 > 0) {
+                    currentSlide2 = (currentSlide2 + 1) % totalSlides2;
+                } else {
+                    currentSlide2 = (currentSlide2 - 1 + totalSlides2) % totalSlides2;
+                }
+                updateCarousel2();
+            }
+
+            isDragging2 = false;
+        });
+
     </script>
 </body>
 </html>
