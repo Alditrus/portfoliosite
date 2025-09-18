@@ -26,7 +26,8 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1500px;
+            width: 70%;
             margin: 0 auto;
             padding: 20px;
             flex: 1;
@@ -71,7 +72,7 @@
         }
         
         .section {
-            margin-bottom: 50px;
+            margin-bottom: 70px;
         }
         
         .section h2 {
@@ -129,9 +130,17 @@
         }
 
         .desktop-carousel-btn img {
-            width: 50px;
-            height: 50px;
-            filter: brightness(0) invert(1);
+            width: 125px;
+            height: 125px;
+            filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(79deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #A0FF8F) drop-shadow(0 0 10px #A0FF8F);
+        }
+
+        .desktop-carousel-btn.prev img {
+            transform: rotate(90deg);
+        }
+
+        .desktop-carousel-btn.next img {
+            transform: rotate(-90deg) scaleX(-1);
         }
 
         .desktop-carousel .project-image .project-content {
@@ -153,7 +162,7 @@
         
         .carousel .project {
             min-width: 100%;
-            flex-shrink: 0;
+            flex-shrink: 1;
         }
         
         .carousel-btn {
@@ -171,6 +180,11 @@
         }
         
         @media (max-width: 980px) {
+            .container {
+                max-width: none;
+                width: 100%;
+            }
+
             .hamburger-menu {
                 display: block;
             }
@@ -193,7 +207,7 @@
 
             .carousel .project-image .project-content {
                 max-height: 500px;
-                width: auto;
+                width: 100%;
                 height: auto;
                 margin: 0 auto;
                 display: block;
@@ -365,47 +379,34 @@
         </div>
         
         <section class="section">
+            <h2 style="font-family: 'Koulen', sans-serif; font-size: 40px; font-weight: 300; letter-spacing: 0.45em; text-align: center; margin-bottom: 40px; border-bottom: none; padding-bottom: 0;">CASE STUDIES</h2>
             <div class="projects">
                 <div class="project">
                     <div class="project-image">
                         <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                     </div>
                     <h3>Case Study #1</h3>
-                    <p>I'm baby sartorial fixie man braid street art pour-over letterpress. Everyday carry portland tumblr leggings tbh plaid, master cleanse umami.</p>
+                    <p>Coming Soon!</p>
                 </div>
                 <div class="project">
                     <div class="project-image">
                         <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                     </div>
                     <h3>Case Study #2</h3>
-                    <p>Plaid austin DSA heirloom. Authentic chia brunch vape, mixtape keytar jawn hoodie cloud bread sriracha tattooed pork belly. Franzen same raw denim keytar portland.</p>
+                    <p>Coming Soon!</p>
                 </div>
                 <div class="project">
                     <div class="project-image">
                         <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                     </div>
                     <h3>Case Study #3</h3>
-                    <p>Williamsburg mukbang cupping art party synth biodiesel woke. Chartreuse woke ramps, whatever coloring book chillwave fam.</p>
-                </div>
-                <div class="project">
-                    <div class="project-image">
-                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
-                    </div>
-                    <h3>Case Study #4</h3>
-                    <p>Flexitarian waistcoat subway tile, craft beer pickled pork belly everyday carry. Chia asymmetrical meditation, etsy tilde fixie church-key.</p>
-                </div>
-                <div class="project">
-                    <div class="project-image">
-                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
-                    </div>
-                    <h3>Case Study #5</h3>
-                    <p>Kombucha organic tacos, distillery man braid blue bottle skateboard put a bird on it. Shoreditch selfies chambray ethical.</p>
+                    <p>Coming Soon!</p>
                 </div>
             </div>
 
             <div class="desktop-carousel-container" id="desktopCarouselContainer">
-                <button class="desktop-carousel-btn" id="desktopPrevBtn">
-                    <img src="graphics/arrowleft.svg" alt="Previous">
+                <button class="desktop-carousel-btn prev" id="desktopPrevBtn">
+                    <img src="graphics/finger_icon.svg" alt="Previous">
                 </button>
                 <div class="desktop-carousel">
                     <div class="desktop-carousel-track" id="desktopCarouselTrack">
@@ -415,21 +416,21 @@
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Case Study #3</h3>
-                            <p>Williamsburg mukbang cupping art party synth biodiesel woke. Chartreuse woke ramps, whatever coloring book chillwave fam.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Case Study #4</h3>
-                            <p>Flexitarian waistcoat subway tile, craft beer pickled pork belly everyday carry. Chia asymmetrical meditation, etsy tilde fixie church-key.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Case Study #5</h3>
-                            <p>Kombucha organic tacos, distillery man braid blue bottle skateboard put a bird on it. Shoreditch selfies chambray ethical.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <!-- Original slides -->
                         <div class="project">
@@ -437,35 +438,35 @@
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Case Study #1</h3>
-                            <p>I'm baby sartorial fixie man braid street art pour-over letterpress. Everyday carry portland tumblr leggings tbh plaid, master cleanse umami.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Case Study #2</h3>
-                            <p>Plaid austin DSA heirloom. Authentic chia brunch vape, mixtape keytar jawn hoodie cloud bread sriracha tattooed pork belly. Franzen same raw denim keytar portland.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Case Study #3</h3>
-                            <p>Williamsburg mukbang cupping art party synth biodiesel woke. Chartreuse woke ramps, whatever coloring book chillwave fam.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Case Study #4</h3>
-                            <p>Flexitarian waistcoat subway tile, craft beer pickled pork belly everyday carry. Chia asymmetrical meditation, etsy tilde fixie church-key.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Case Study #5</h3>
-                            <p>Kombucha organic tacos, distillery man braid blue bottle skateboard put a bird on it. Shoreditch selfies chambray ethical.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <!-- Duplicate first 3 slides for infinite loop -->
                         <div class="project">
@@ -473,29 +474,29 @@
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Case Study #1</h3>
-                            <p>I'm baby sartorial fixie man braid street art pour-over letterpress. Everyday carry portland tumblr leggings tbh plaid, master cleanse umami.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Case Study #2</h3>
-                            <p>Plaid austin DSA heirloom. Authentic chia brunch vape, mixtape keytar jawn hoodie cloud bread sriracha tattooed pork belly. Franzen same raw denim keytar portland.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Case Study #3</h3>
-                            <p>Williamsburg mukbang cupping art party synth biodiesel woke. Chartreuse woke ramps, whatever coloring book chillwave fam.</p>
+                            <p>Coming Soon!</p>
                         </div>
                     </div>
                 </div>
-                <button class="desktop-carousel-btn" id="desktopNextBtn">
-                    <img src="graphics/arrowright.svg" alt="Next">
+                <button class="desktop-carousel-btn next" id="desktopNextBtn">
+                    <img src="graphics/finger_icon.svg" alt="Next">
                 </button>
             </div>
-            
+
             <div class="carousel-container">
                 <button class="carousel-btn" id="prevBtn">
                     <img src="graphics/arrowleft.svg" alt="Previous">
@@ -508,7 +509,7 @@
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Project 3</h3>
-                            <p>Description of your third project.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <!-- Original slides -->
                         <div class="project">
@@ -516,21 +517,21 @@
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Project 1</h3>
-                            <p>Description of your first project.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Project 2</h3>
-                            <p>Description of your second project.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <div class="project">
                             <div class="project-image">
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Project 3</h3>
-                            <p>Description of your third project.</p>
+                            <p>Coming Soon!</p>
                         </div>
                         <!-- Duplicate first slide for infinite loop -->
                         <div class="project">
@@ -538,7 +539,7 @@
                                 <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
                             </div>
                             <h3>Project 1</h3>
-                            <p>Description of your first project.</p>
+                            <p>Coming Soon!</p>
                         </div>
                     </div>
                 </div>
@@ -547,7 +548,178 @@
                 </button>
             </div>
         </section>
-        
+
+        <section class="section">
+            <h2 style="font-family: 'Koulen', sans-serif; font-size: 40px; font-weight: 300; letter-spacing: 0.45em; text-align: center; margin-bottom: 40px; border-bottom: none; padding-bottom: 0;">HEURISTIC STUDIES</h2>
+            <div class="projects">
+                <div class="project">
+                    <div class="project-image">
+                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                    </div>
+                    <h3>Case Study #1</h3>
+                    <p>Coming Soon!</p>
+                </div>
+                <div class="project">
+                    <div class="project-image">
+                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                    </div>
+                    <h3>Case Study #2</h3>
+                    <p>Coming Soon!</p>
+                </div>
+                <div class="project">
+                    <div class="project-image">
+                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                    </div>
+                    <h3>Case Study #3</h3>
+                    <p>Coming Soon!</p>
+                </div>
+            </div>
+
+            <div class="desktop-carousel-container" id="desktopCarouselContainer2">
+                <button class="desktop-carousel-btn prev" id="desktopPrevBtn2">
+                    <img src="graphics/finger_icon.svg" alt="Previous">
+                </button>
+                <div class="desktop-carousel">
+                    <div class="desktop-carousel-track" id="desktopCarouselTrack2">
+                        <!-- Duplicate last 3 slides for infinite loop -->
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #3</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #4</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #5</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <!-- Original slides -->
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #1</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #2</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #3</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #4</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #5</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <!-- Duplicate first 3 slides for infinite loop -->
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #1</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #2</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Case Study #3</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="desktop-carousel-btn next" id="desktopNextBtn2">
+                    <img src="graphics/finger_icon.svg" alt="Next">
+                </button>
+            </div>
+
+            <div class="carousel-container">
+                <button class="carousel-btn" id="prevBtn2">
+                    <img src="graphics/arrowleft.svg" alt="Previous">
+                </button>
+                <div class="carousel">
+                    <div class="carousel-track" id="carouselTrack2">
+                        <!-- Duplicate last slide for infinite loop -->
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Project 3</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <!-- Original slides -->
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Project 1</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Project 2</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Project 3</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <!-- Duplicate first slide for infinite loop -->
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
+                            </div>
+                            <h3>Project 1</h3>
+                            <p>Coming Soon!</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn" id="nextBtn2">
+                    <img src="graphics/arrowright.svg" alt="Next">
+                </button>
+            </div>
+        </section>
+
         <footer>
             <p>&copy; 2025 Jamison Orten. All rights reserved.</p>
         </footer>
@@ -577,144 +749,183 @@
             }
         });
 
-        // Check if we have more than 4 projects and show appropriate carousel
-        const projectsGrid = document.querySelector('.projects');
-        const projectCount = projectsGrid.querySelectorAll('.project').length;
-        const desktopCarouselContainer = document.getElementById('desktopCarouselContainer');
+        // Check all sections and apply desktop carousel functionality
+        const sections = document.querySelectorAll('.section');
+        const desktopCarousels = [];
 
-        if (projectCount > 4) {
-            // Hide grid and show desktop carousel
-            projectsGrid.style.display = 'none';
-            desktopCarouselContainer.style.display = 'flex';
-        }
+        sections.forEach((section, sectionIndex) => {
+            const projectsGrid = section.querySelector('.projects');
+            if (!projectsGrid) return;
 
-        // Desktop Carousel functionality
-        let desktopCurrentSlide = 3; // Start at first real slide (index 3, showing 3 slides)
-        const desktopCarouselTrack = document.getElementById('desktopCarouselTrack');
-        const desktopProjects = desktopCarouselTrack.querySelectorAll('.project');
-        const desktopTotalSlides = desktopProjects.length;
-        const desktopRealSlides = 5; // Number of actual unique slides
+            const projectCount = projectsGrid.querySelectorAll('.project').length;
+            const desktopCarouselContainer = section.querySelector('.desktop-carousel-container');
 
-        function updateDesktopCarousel(instant = false) {
-            // Show 3 slides at a time, so translate by 33.333% per slide
-            const translateX = -desktopCurrentSlide * (100/3);
-            if (instant) {
-                desktopCarouselTrack.style.transition = 'none';
-                desktopCarouselTrack.style.transform = `translateX(${translateX}%)`;
-                // Force reflow
-                desktopCarouselTrack.offsetHeight;
-                desktopCarouselTrack.style.transition = 'transform 0.3s ease';
-            } else {
-                desktopCarouselTrack.style.transform = `translateX(${translateX}%)`;
-            }
-        }
+            if (projectCount > 4 && desktopCarouselContainer) {
+                // Hide grid and show desktop carousel
+                projectsGrid.style.display = 'none';
+                desktopCarouselContainer.style.display = 'flex';
 
-        function handleDesktopInfiniteLoop() {
-            if (desktopCurrentSlide <= 2) {
-                // Jump to last real slides without animation
-                desktopCurrentSlide = desktopRealSlides + 2;
-                updateDesktopCarousel(true);
-            } else if (desktopCurrentSlide >= desktopTotalSlides - 3) {
-                // Jump to first real slides without animation
-                desktopCurrentSlide = 3;
-                updateDesktopCarousel(true);
-            }
-        }
+                // Initialize desktop carousel for this section
+                const carouselData = {
+                    currentSlide: 3, // Start at first real slide (index 3, showing 3 slides)
+                    track: desktopCarouselContainer.querySelector('.desktop-carousel-track'),
+                    realSlides: 5, // Number of actual unique slides
+                };
 
-        // Set initial position for desktop carousel
-        if (projectCount > 4) {
-            updateDesktopCarousel(true);
+                const projects = carouselData.track.querySelectorAll('.project');
+                carouselData.totalSlides = projects.length;
 
-            document.getElementById('desktopNextBtn').addEventListener('click', () => {
-                desktopCurrentSlide++;
-                updateDesktopCarousel();
-                setTimeout(handleDesktopInfiniteLoop, 300);
-            });
-
-            document.getElementById('desktopPrevBtn').addEventListener('click', () => {
-                desktopCurrentSlide--;
-                updateDesktopCarousel();
-                setTimeout(handleDesktopInfiniteLoop, 300);
-            });
-        }
-
-        // Mobile Carousel functionality
-        let currentSlide = 1; // Start at first real slide (index 1)
-        const carouselTrack = document.getElementById('carouselTrack');
-        const projects = carouselTrack.querySelectorAll('.project');
-        const totalSlides = projects.length;
-        const realSlides = 3; // Number of actual unique slides
-
-        function updateCarousel(instant = false) {
-            const translateX = -currentSlide * 100;
-            if (instant) {
-                carouselTrack.style.transition = 'none';
-                carouselTrack.style.transform = `translateX(${translateX}%)`;
-                // Force reflow
-                carouselTrack.offsetHeight;
-                carouselTrack.style.transition = 'transform 0.3s ease';
-            } else {
-                carouselTrack.style.transform = `translateX(${translateX}%)`;
-            }
-        }
-
-        function handleInfiniteLoop() {
-            if (currentSlide === 0) {
-                // Jump to last real slide without animation
-                currentSlide = realSlides;
-                updateCarousel(true);
-            } else if (currentSlide === totalSlides - 1) {
-                // Jump to first real slide without animation
-                currentSlide = 1;
-                updateCarousel(true);
-            }
-        }
-
-        // Set initial position
-        updateCarousel(true);
-
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            currentSlide++;
-            updateCarousel();
-            setTimeout(handleInfiniteLoop, 300);
-        });
-
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            currentSlide--;
-            updateCarousel();
-            setTimeout(handleInfiniteLoop, 300);
-        });
-        
-        // Touch/swipe support
-        let startX = 0;
-        let isDragging = false;
-
-        carouselTrack.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-        });
-
-        carouselTrack.addEventListener('touchmove', (e) => {
-            e.preventDefault();
-        });
-
-        carouselTrack.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
-
-            const endX = e.changedTouches[0].clientX;
-            const diffX = startX - endX;
-
-            if (Math.abs(diffX) > 50) {
-                if (diffX > 0) {
-                    currentSlide++;
-                } else {
-                    currentSlide--;
+                function updateDesktopCarousel(instant = false) {
+                    // Show 3 slides at a time, so translate by 33.333% per slide
+                    const translateX = -carouselData.currentSlide * (100/3);
+                    if (instant) {
+                        carouselData.track.style.transition = 'none';
+                        carouselData.track.style.transform = `translateX(${translateX}%)`;
+                        // Force reflow
+                        carouselData.track.offsetHeight;
+                        carouselData.track.style.transition = 'transform 0.3s ease';
+                    } else {
+                        carouselData.track.style.transform = `translateX(${translateX}%)`;
+                    }
                 }
-                updateCarousel();
-                setTimeout(handleInfiniteLoop, 300);
+
+                function handleDesktopInfiniteLoop() {
+                    if (carouselData.currentSlide <= 2) {
+                        // Jump to last real slides without animation
+                        carouselData.currentSlide = carouselData.realSlides + 2;
+                        updateDesktopCarousel(true);
+                    } else if (carouselData.currentSlide >= carouselData.totalSlides - 3) {
+                        // Jump to first real slides without animation
+                        carouselData.currentSlide = 3;
+                        updateDesktopCarousel(true);
+                    }
+                }
+
+                // Set initial position
+                updateDesktopCarousel(true);
+
+                // Add event listeners for this carousel's buttons
+                const nextBtn = desktopCarouselContainer.querySelector('.desktop-carousel-btn.next');
+                const prevBtn = desktopCarouselContainer.querySelector('.desktop-carousel-btn.prev');
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        carouselData.currentSlide++;
+                        updateDesktopCarousel();
+                        setTimeout(handleDesktopInfiniteLoop, 300);
+                    });
+                }
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        carouselData.currentSlide--;
+                        updateDesktopCarousel();
+                        setTimeout(handleDesktopInfiniteLoop, 300);
+                    });
+                }
+
+                desktopCarousels.push(carouselData);
+            }
+        });
+
+        // Mobile Carousel functionality for all sections
+        const mobileCarousels = [];
+        const carouselContainers = document.querySelectorAll('.carousel-container');
+
+        carouselContainers.forEach((container, index) => {
+            const carouselTrack = container.querySelector('.carousel-track');
+            if (!carouselTrack) return;
+
+            const projects = carouselTrack.querySelectorAll('.project');
+            const carouselData = {
+                currentSlide: 1, // Start at first real slide (index 1)
+                track: carouselTrack,
+                totalSlides: projects.length,
+                realSlides: 3, // Number of actual unique slides
+                container: container
+            };
+
+            function updateCarousel(instant = false) {
+                const translateX = -carouselData.currentSlide * 100;
+                if (instant) {
+                    carouselData.track.style.transition = 'none';
+                    carouselData.track.style.transform = `translateX(${translateX}%)`;
+                    // Force reflow
+                    carouselData.track.offsetHeight;
+                    carouselData.track.style.transition = 'transform 0.3s ease';
+                } else {
+                    carouselData.track.style.transform = `translateX(${translateX}%)`;
+                }
             }
 
-            isDragging = false;
+            function handleInfiniteLoop() {
+                if (carouselData.currentSlide === 0) {
+                    // Jump to last real slide without animation
+                    carouselData.currentSlide = carouselData.realSlides;
+                    updateCarousel(true);
+                } else if (carouselData.currentSlide === carouselData.totalSlides - 1) {
+                    // Jump to first real slide without animation
+                    carouselData.currentSlide = 1;
+                    updateCarousel(true);
+                }
+            }
+
+            // Set initial position
+            updateCarousel(true);
+
+            // Button event listeners
+            const nextBtn = container.querySelector('.carousel-btn:last-child');
+            const prevBtn = container.querySelector('.carousel-btn:first-child');
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    carouselData.currentSlide++;
+                    updateCarousel();
+                    setTimeout(handleInfiniteLoop, 300);
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    carouselData.currentSlide--;
+                    updateCarousel();
+                    setTimeout(handleInfiniteLoop, 300);
+                });
+            }
+
+            // Touch/swipe support
+            let startX = 0;
+            let isDragging = false;
+
+            carouselData.track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+
+            carouselData.track.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+            });
+
+            carouselData.track.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+
+                const endX = e.changedTouches[0].clientX;
+                const diffX = startX - endX;
+
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        carouselData.currentSlide++;
+                    } else {
+                        carouselData.currentSlide--;
+                    }
+                    updateCarousel();
+                    setTimeout(handleInfiniteLoop, 300);
+                }
+
+                isDragging = false;
+            });
+
+            mobileCarousels.push(carouselData);
         });
     </script>
 </body>

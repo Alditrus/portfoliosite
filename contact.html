@@ -315,18 +315,32 @@
             filter: brightness(0) saturate(100%) invert(78%) sepia(37%) saturate(1456%) hue-rotate(261deg) brightness(97%) contrast(98%) drop-shadow(0 0 10px #ba0bffff);
         }
 
+        .social-icon:nth-child(4) {
+            filter: brightness(0) saturate(100%) invert(26%) sepia(89%) saturate(1583%) hue-rotate(330deg) brightness(93%) contrast(86%) drop-shadow(0 0 10px crimson);
+        }
+
         .social-icon:hover {
             transform: scale(1.1);
             filter: brightness(0) invert(1) drop-shadow(0 0 10px #ffffff);
         }
         
         @media (max-width: 980px) {
+            .container {
+                max-width: none;
+                width: 100%;
+            }
+
             nav {
                 display: none;
             }
 
             .hamburger {
                 display: block;
+            }
+
+            .social-icons {
+                flex-direction: column;
+                gap: 40px !important;
             }
         }
 
@@ -356,7 +370,7 @@
             }
 
             .contact-header h2 {
-                font-size: 40px;
+                font-size: 25px;
             }
 
             .mail-left, .mail-right {
@@ -368,8 +382,8 @@
             }
 
             .social-icon {
-                width: 50px;
-                height: 50px;
+                width: 100px;
+                height: 140px;
             }
         }
         
@@ -438,6 +452,7 @@
                 <img src="graphics/inkedin.svg" alt="LinkedIn" class="social-icon">
                 <img src="graphics/protonmail.svg" alt="ProtonMail" class="social-icon">
                 <img src="graphics/farcaster.svg" alt="Farcaster" class="social-icon">
+                <img src="graphics/github.svg" alt="GitHub" class="social-icon">
             </div>
         </section>
         
