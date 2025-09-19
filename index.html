@@ -3,509 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Jamison Orten - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&family=Tilt+Neon&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            text-align: left;
         }
-        
+
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: white;
+            font-family: 'Geologica', sans-serif;
             background-color: #0A0A0A;
+            background-image: url('graphics/homepage_background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-        }
-        
-        .container {
-            max-width: 1200px;
-            width: 70%;
-            margin: 0 auto;
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-            display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .hamburger-menu {
-            display: none;
-            position: absolute;
-            left: 20px;
-            cursor: pointer;
-            z-index: 1001;
-            background: none;
-            border: none;
-            padding-bottom: 5px;
-        }
-
-        .hamburger-menu img {
-            width: 40px;
-            height: 35px;
-            filter: brightness(0) invert(1);
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: #ccc;
-        }
-        
-        .section {
-            margin-bottom: 50px;
-        }
-        
-        .section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid white;
-            padding-bottom: 10px;
-        }
-        
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        
-        .carousel-container {
-            display: none;
-            position: relative;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .carousel {
             overflow: hidden;
-            width: 100%;
-            max-width: 350px;
         }
-        
-        .carousel-track {
-            display: flex;
-            transition: transform 0.3s ease;
+
+        .landing-container {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
         }
-        
-        .carousel .project {
-            min-width: 100%;
-            flex-shrink: 1;
-        }
-        
-        .carousel-btn {
-            background: none;
-            border: none;
+
+        .logo {
+            margin-bottom: 40px;
+            opacity: 1;
             cursor: pointer;
-            padding: 5px;
-            margin: 0px;
-        }
-        
-        .carousel-btn img {
-            width: 50px;
-            height: 50px;
-            filter: brightness(0) invert(1);
-        }
-        
-        @media (max-width: 980px) {
-            .container {
-                max-width: none;
-                width: 100%;
-            }
-
-            .hamburger-menu {
-                display: block;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .projects {
-                display: none;
-            }
-
-            .carousel-container {
-                display: flex;
-            }
-        }
-        
-        .project {
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-        }
-        
-        .project-image {
-            position: relative;
-            margin-bottom: 15px;
         }
 
-        .project-image .project-frame {
-            width: 100%;
+        .logo img {
+            width: 300px;
             height: auto;
-            position: relative;
-            z-index: 2;
+            filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
+            transition: filter 0.6s ease;
         }
 
-        .project-image .project-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: cover;
-            z-index: 1;
+        .logo.lit-up img {
+            filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            animation: neonFlicker 1.2s ease-out;
         }
-        
-        .project h3 {
-            margin-bottom: 10px;
-            font-family: 'Kreon', serif;
-            font-size: 30px;
-            font-weight: 100;
+
+        @keyframes neonFlicker {
+            0% {
+                filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
+            }
+            10% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            15% {
+                filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
+            }
+            25% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            30% {
+                filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
+            }
+            40% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 2px #27FF00) drop-shadow(0 0 5px #27FF00);
+            }
+            50% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 8px #27FF00) drop-shadow(0 0 15px #27FF00);
+            }
+            60% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 3px #27FF00) drop-shadow(0 0 8px #27FF00);
+            }
+            80% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            100% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
         }
-        
-        .project p {
-            font-family: 'Geologica', sans-serif;
-            font-weight: 400;
+
+        .welcome-text {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
         }
-        
-        nav {
-            text-align: center;
-            margin-bottom: 50px;
+
+        .welcome-text.show {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        nav ul {
-            list-style: none;
-            display: inline-flex;
-            justify-content: space-between;
-            width: 80%;
+
+        .welcome-text h1 {
+            font-family: 'Koulen', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 0.45em;
+            margin-bottom: 20px;
+        }
+
+        .welcome-text p {
+            font-size: 32px;
+            letter-spacing: 0.45em;
+            line-height: 1.6;
+            color: #ccc;
             max-width: 600px;
             margin: 0 auto;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
             font-family: 'Koulen', sans-serif;
-            font-size: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.45em;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: #ccc;
         }
 
-        .mobile-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(10, 10, 10, 0.95);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        .enter-button {
             opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
         }
 
-        .mobile-nav.active {
+        .enter-button.show {
             opacity: 1;
-            visibility: visible;
+            transform: translateY(0);
         }
 
-        .mobile-nav ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            text-align: center;
-        }
-
-        .mobile-nav li {
-            text-align: center;
-        }
-
-        .mobile-nav a {
-            color: white;
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: transparent;
+            border: none;
+            color: #27FF00;
             text-decoration: none;
-            font-family: 'Koulen', sans-serif;
-            font-size: 30px;
+            font-family: 'Tilt Neon', cursive;
+            font-size: 3rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            letter-spacing: 0.45em;
-            transition: color 0.3s;
+            filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        
-        footer {
-            text-align: center;
-            margin-top: auto;
-            padding-top: 40px;
-            border-top: 3px solid transparent;
-            position: relative;
+
+        .btn:hover {
+            filter: brightness(0) invert(1) drop-shadow(0 0 5px #ffffff) drop-shadow(0 0 10px #ffffff);
+            transform: scale(1.1);
         }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(to right, rgba(85, 85, 85, 0), #555, rgba(85, 85, 85, 0));
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
-        footer p {
-            font-family: 'Koulen', sans-serif;
-            letter-spacing: 0.45em;
-            text-align: center;
-            opacity: 0.5;
+
+        @media (max-width: 768px) {
+            .landing-container {
+                padding: 20px;
+            }
+
+            .logo img {
+                width: 220px;
+            }
+
+            .welcome-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .welcome-text p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <button class="hamburger-menu" id="hamburgerBtn">
-                <img src="graphics/hamburger.svg" alt="Menu">
-            </button>
-            <a href="index.html">
-                <img src="graphics/JO_neon.svg" alt="JO" style="max-width: auto; height: 70px; margin-bottom: 10px; margin-top: 10px; filter: brightness(0) invert(1); cursor: pointer;">
-            </a>
-        </header>
-
-        <nav id="mainNav">
-            <ul>
-                <li><a href="about.html">About</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-
-        <div class="mobile-nav" id="mobileNav">
-            <ul>
-                <li><a href="about.html">About</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+    <div class="landing-container">
+        <div class="logo">
+            <img src="graphics/JO_neon.svg" alt="JO">
         </div>
-        
-        <section class="section">
-            <div class="projects">
-                <div class="project">
-                    <div class="project-image">
-                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
-                        <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
-                    </div>
-                    <h3>Case Study #1</h3>
-                    <p>Coming Soon!</p>
-                </div>
-                <div class="project">
-                    <div class="project-image">
-                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
-                        <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
-                    </div>
-                    <h3>Case Study #2</h3>
-                    <p>Coming Soon!</p>
-                </div>
-                <div class="project">
-                    <div class="project-image">
-                        <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
-                        <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
-                    </div>
-                    <h3>Case Study #3</h3>
-                    <p>Coming Soon!</p>
-                </div>
-            </div>
-            
-            <div class="carousel-container">
-                <button class="carousel-btn" id="prevBtn">
-                    <img src="graphics/arrowleft.svg" alt="Previous">
-                </button>
-                <div class="carousel">
-                    <div class="carousel-track" id="carouselTrack">
-                        <!-- Duplicate last slide for infinite loop -->
-                        <div class="project">
-                            <div class="project-image">
-                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
-                                <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
-                            </div>
-                            <h3>Project 3</h3>
-                            <p>Coming Soon!</p>
-                        </div>
-                        <!-- Original slides -->
-                        <div class="project">
-                            <div class="project-image">
-                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
-                                <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
-                            </div>
-                            <h3>Project 1</h3>
-                            <p>Coming Soon!</p>
-                        </div>
-                        <div class="project">
-                            <div class="project-image">
-                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
-                                <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
-                            </div>
-                            <h3>Project 2</h3>
-                            <p>Coming Soon!</p>
-                        </div>
-                        <div class="project">
-                            <div class="project-image">
-                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
-                                <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
-                            </div>
-                            <h3>Project 3</h3>
-                            <p>Coming Soon!</p>
-                        </div>
-                        <!-- Duplicate first slide for infinite loop -->
-                        <div class="project">
-                            <div class="project-image">
-                                <img src="graphics/comingsoon.png" alt="Coming Soon" class="project-content">
-                                <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
-                            </div>
-                            <h3>Project 1</h3>
-                            <p>Coming Soon!</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-btn" id="nextBtn">
-                    <img src="graphics/arrowright.svg" alt="Next">
-                </button>
-            </div>
-        </section>
-        
-        <footer>
-            <p>&copy; 2025 Jamison Orten. All rights reserved.</p>
-        </footer>
+
+        <div class="welcome-text">
+            <h1>Jamison Orten</h1>
+            <p>UI UX - Experiential Designer</p>
+        </div>
+
+        <div class="enter-button">
+            <a href="landing.html" class="btn" id="enterSite">ENTER</a>
+        </div>
     </div>
-    
+
     <script>
-        // Hamburger menu functionality
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileNav = document.getElementById('mobileNav');
+        let hasActivated = false;
 
-        hamburgerBtn.addEventListener('click', () => {
-            mobileNav.classList.toggle('active');
-        });
+        // Logo click handler
+        document.querySelector('.logo').addEventListener('click', function() {
+            if (hasActivated) return;
 
-        // Close mobile nav when clicking on a link
-        const mobileNavLinks = mobileNav.querySelectorAll('a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNav.classList.remove('active');
+            hasActivated = true;
+
+            // Play neon sound effect
+            const neonSound = new Audio('sound effects/neon_on.ogg');
+            neonSound.play().catch(error => {
+                console.log('Sound play failed:', error);
             });
+
+            // Light up the logo
+            this.classList.add('lit-up');
+
+            // Show the rest of the content after logo lights up
+            setTimeout(() => {
+                document.querySelector('.welcome-text').classList.add('show');
+                document.querySelector('.enter-button').classList.add('show');
+            }, 300);
         });
 
-        // Close mobile nav when clicking outside
-        mobileNav.addEventListener('click', (e) => {
-            if (e.target === mobileNav) {
-                mobileNav.classList.remove('active');
-            }
-        });
-
-        // Carousel functionality
-        let currentSlide = 1; // Start at first real slide (index 1)
-        const carouselTrack = document.getElementById('carouselTrack');
-        const projects = carouselTrack.querySelectorAll('.project');
-        const totalSlides = projects.length;
-        const realSlides = 3; // Number of actual unique slides
-
-        function updateCarousel(instant = false) {
-            const translateX = -currentSlide * 100;
-            if (instant) {
-                carouselTrack.style.transition = 'none';
-                carouselTrack.style.transform = `translateX(${translateX}%)`;
-                // Force reflow
-                carouselTrack.offsetHeight;
-                carouselTrack.style.transition = 'transform 0.3s ease';
-            } else {
-                carouselTrack.style.transform = `translateX(${translateX}%)`;
-            }
-        }
-
-        function handleInfiniteLoop() {
-            if (currentSlide === 0) {
-                // Jump to last real slide without animation
-                currentSlide = realSlides;
-                updateCarousel(true);
-            } else if (currentSlide === totalSlides - 1) {
-                // Jump to first real slide without animation
-                currentSlide = 1;
-                updateCarousel(true);
-            }
-        }
-
-        // Set initial position
-        updateCarousel(true);
-
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            currentSlide++;
-            updateCarousel();
-            setTimeout(handleInfiniteLoop, 300);
-        });
-
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            currentSlide--;
-            updateCarousel();
-            setTimeout(handleInfiniteLoop, 300);
-        });
-        
-        // Touch/swipe support
-        let startX = 0;
-        let isDragging = false;
-
-        carouselTrack.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-        });
-
-        carouselTrack.addEventListener('touchmove', (e) => {
+        // Enter site button handler
+        document.getElementById('enterSite').addEventListener('click', function(e) {
             e.preventDefault();
+
+            // Set localStorage to indicate user has visited
+            localStorage.setItem('hasVisitedBefore', 'true');
+
+            // Navigate to main portfolio
+            window.location.href = 'landing.html';
         });
 
-        carouselTrack.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
-
-            const endX = e.changedTouches[0].clientX;
-            const diffX = startX - endX;
-
-            if (Math.abs(diffX) > 50) {
-                if (diffX > 0) {
-                    currentSlide++;
-                } else {
-                    currentSlide--;
-                }
-                updateCarousel();
-                setTimeout(handleInfiniteLoop, 300);
-            }
-
-            isDragging = false;
-        });
+        // Check if user has visited before and redirect if they have
+        if (localStorage.getItem('hasVisitedBefore') === 'true') {
+            window.location.href = 'landing.html';
+        }
     </script>
 </body>
 </html>
