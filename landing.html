@@ -6,7 +6,7 @@
     <title>Jamison Orten - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&family=Tilt+Neon&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -37,65 +37,115 @@
 
         .logo {
             margin-bottom: 40px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards;
+            opacity: 1;
+            cursor: pointer;
         }
 
         .logo img {
-            width: 200px;
+            width: 300px;
             height: auto;
-            filter: brightness(0) invert(1);
+            filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
+            transition: filter 0.6s ease;
+        }
+
+        .logo.lit-up img {
+            filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            animation: neonFlicker 1.2s ease-out;
+        }
+
+        @keyframes neonFlicker {
+            0% {
+                filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
+            }
+            10% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            15% {
+                filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
+            }
+            25% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            30% {
+                filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
+            }
+            40% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 2px #27FF00) drop-shadow(0 0 5px #27FF00);
+            }
+            50% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 8px #27FF00) drop-shadow(0 0 15px #27FF00);
+            }
+            60% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 3px #27FF00) drop-shadow(0 0 8px #27FF00);
+            }
+            80% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            100% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
         }
 
         .welcome-text {
             margin-bottom: 60px;
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeInUp 1s ease 0.5s forwards;
+            transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+        }
+
+        .welcome-text.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .welcome-text h1 {
             font-family: 'Koulen', sans-serif;
             font-size: 3.5rem;
             font-weight: 300;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.45em;
             margin-bottom: 20px;
         }
 
         .welcome-text p {
-            font-size: 1.2rem;
+            font-size: 32px;
+            letter-spacing: 0.45em;
             line-height: 1.6;
             color: #ccc;
             max-width: 600px;
             margin: 0 auto;
+            font-family: 'Koulen', sans-serif;
         }
 
         .enter-button {
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeInUp 1s ease 1s forwards;
+            transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+        }
+
+        .enter-button.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .btn {
             display: inline-block;
             padding: 15px 40px;
             background: transparent;
-            border: 2px solid white;
-            color: white;
+            border: none;
+            color: #27FF00;
             text-decoration: none;
-            font-family: 'Koulen', sans-serif;
-            font-size: 1.2rem;
+            font-family: 'Tilt Neon', cursive;
+            font-size: 3rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
+            filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .btn:hover {
-            background: white;
-            color: #0A0A0A;
-            transform: translateY(-2px);
+            filter: brightness(0) invert(1) drop-shadow(0 0 5px #ffffff) drop-shadow(0 0 10px #ffffff);
+            transform: scale(1.1);
         }
 
         @keyframes fadeInUp {
@@ -111,7 +161,7 @@
             }
 
             .logo img {
-                width: 150px;
+                width: 220px;
             }
 
             .welcome-text h1 {
@@ -131,16 +181,41 @@
         </div>
 
         <div class="welcome-text">
-            <h1>Welcome</h1>
-            <p>Hi, I'm Jamison Orten - a designer and creative professional. Explore my portfolio to discover my latest work, experience, and creative journey.</p>
+            <h1>Jamison Orten</h1>
+            <p>UI UX - Experiential Designer</p>
         </div>
 
         <div class="enter-button">
-            <a href="index.html" class="btn" id="enterSite">Enter Portfolio</a>
+            <a href="index.html" class="btn" id="enterSite">ENTER</a>
         </div>
     </div>
 
     <script>
+        let hasActivated = false;
+
+        // Logo click handler
+        document.querySelector('.logo').addEventListener('click', function() {
+            if (hasActivated) return;
+
+            hasActivated = true;
+
+            // Play neon sound effect
+            const neonSound = new Audio('sound effects/neon_on.ogg');
+            neonSound.play().catch(error => {
+                console.log('Sound play failed:', error);
+            });
+
+            // Light up the logo
+            this.classList.add('lit-up');
+
+            // Show the rest of the content after logo lights up
+            setTimeout(() => {
+                document.querySelector('.welcome-text').classList.add('show');
+                document.querySelector('.enter-button').classList.add('show');
+            }, 300);
+        });
+
+        // Enter site button handler
         document.getElementById('enterSite').addEventListener('click', function(e) {
             e.preventDefault();
 

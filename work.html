@@ -27,7 +27,7 @@
         
         .container {
             max-width: 1500px;
-            width: 70%;
+            width: 50%;
             margin: 0 auto;
             padding: 20px;
             flex: 1;
@@ -84,7 +84,7 @@
         
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
         
@@ -102,6 +102,7 @@
             justify-content: center;
             margin-top: 20px;
         }
+
 
         .desktop-carousel {
             overflow: hidden;
@@ -126,13 +127,28 @@
             border: none;
             cursor: pointer;
             padding: 5px;
-            margin: 0 10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .desktop-carousel-btn.prev {
+            left: -80px;
+        }
+
+        .desktop-carousel-btn.next {
+            right: -80px;
         }
 
         .desktop-carousel-btn img {
-            width: 125px;
-            height: 125px;
-            filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(79deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #A0FF8F) drop-shadow(0 0 10px #A0FF8F);
+            width: 4vw;
+            height: 4vw;
+            max-width: 80px;
+            max-height: 80px;
+            min-width: 40px;
+            min-height: 40px;
+            filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #A0FF8F) drop-shadow(0 0 10px #A0FF8F);
         }
 
         .desktop-carousel-btn.prev img {
@@ -207,7 +223,7 @@
 
             .carousel .project-image .project-content {
                 max-height: 500px;
-                width: 100%;
+                width: 90%;
                 height: auto;
                 margin: 0 auto;
                 display: block;
@@ -224,6 +240,8 @@
             padding: 10px;
             border-radius: 5px;
             text-align: center;
+            width: fit-content;
+            margin: 0 auto;
         }
         
         .project-image {
@@ -265,8 +283,10 @@
         nav ul {
             list-style: none;
             display: inline-flex;
-            justify-content: space-evenly;
-            gap: 15em;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         nav a {
@@ -359,22 +379,24 @@
             <button class="hamburger-menu" id="hamburgerBtn">
                 <img src="graphics/hamburger.svg" alt="Menu">
             </button>
-            <img src="graphics/JO_neon.svg" alt="JO" style="max-width: auto; height: 70px; margin-bottom: 10px; margin-top: 10px; filter: brightness(0) invert(1);">
+            <a href="index.html">
+                <img src="graphics/JO_neon.svg" alt="JO" style="max-width: auto; height: 70px; margin-bottom: 10px; margin-top: 10px; filter: brightness(0) invert(1); cursor: pointer;">
+            </a>
         </header>
 
         <nav id="mainNav">
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
 
         <div class="mobile-nav" id="mobileNav">
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
         
@@ -407,6 +429,9 @@
             <div class="desktop-carousel-container" id="desktopCarouselContainer">
                 <button class="desktop-carousel-btn prev" id="desktopPrevBtn">
                     <img src="graphics/finger_icon.svg" alt="Previous">
+                </button>
+                <button class="desktop-carousel-btn next" id="desktopNextBtn">
+                    <img src="graphics/finger_icon.svg" alt="Next">
                 </button>
                 <div class="desktop-carousel">
                     <div class="desktop-carousel-track" id="desktopCarouselTrack">
@@ -492,11 +517,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="desktop-carousel-btn next" id="desktopNextBtn">
-                    <img src="graphics/finger_icon.svg" alt="Next">
-                </button>
             </div>
-
             <div class="carousel-container">
                 <button class="carousel-btn" id="prevBtn">
                     <img src="graphics/arrowleft.svg" alt="Previous">
@@ -578,6 +599,9 @@
             <div class="desktop-carousel-container" id="desktopCarouselContainer2">
                 <button class="desktop-carousel-btn prev" id="desktopPrevBtn2">
                     <img src="graphics/finger_icon.svg" alt="Previous">
+                </button>
+                <button class="desktop-carousel-btn next" id="desktopNextBtn2">
+                    <img src="graphics/finger_icon.svg" alt="Next">
                 </button>
                 <div class="desktop-carousel">
                     <div class="desktop-carousel-track" id="desktopCarouselTrack2">
@@ -663,11 +687,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="desktop-carousel-btn next" id="desktopNextBtn2">
-                    <img src="graphics/finger_icon.svg" alt="Next">
-                </button>
             </div>
-
             <div class="carousel-container">
                 <button class="carousel-btn" id="prevBtn2">
                     <img src="graphics/arrowleft.svg" alt="Previous">

@@ -84,7 +84,7 @@
         
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
         
@@ -197,8 +197,10 @@
         nav ul {
             list-style: none;
             display: inline-flex;
-            justify-content: space-evenly;
-            gap: 15em;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         nav a {
@@ -291,22 +293,24 @@
             <button class="hamburger-menu" id="hamburgerBtn">
                 <img src="graphics/hamburger.svg" alt="Menu">
             </button>
-            <img src="graphics/JO_neon.svg" alt="JO" style="max-width: auto; height: 70px; margin-bottom: 10px; margin-top: 10px; filter: brightness(0) invert(1);">
+            <a href="index.html">
+                <img src="graphics/JO_neon.svg" alt="JO" style="max-width: auto; height: 70px; margin-bottom: 10px; margin-top: 10px; filter: brightness(0) invert(1); cursor: pointer;">
+            </a>
         </header>
 
         <nav id="mainNav">
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
 
         <div class="mobile-nav" id="mobileNav">
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
         
