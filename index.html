@@ -219,17 +219,9 @@
         document.getElementById('enterSite').addEventListener('click', function(e) {
             e.preventDefault();
 
-            // Set localStorage to indicate user has visited
-            localStorage.setItem('hasVisitedBefore', 'true');
-
             // Navigate to main portfolio
             window.location.href = 'landing.html';
         });
-
-        // Check if user has visited before and redirect if they have
-        if (localStorage.getItem('hasVisitedBefore') === 'true') {
-            window.location.href = 'landing.html';
-        }
     </script>
 </body>
 </html>
