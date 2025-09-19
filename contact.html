@@ -79,8 +79,10 @@
         nav ul {
             list-style: none;
             display: inline-flex;
-            justify-content: space-evenly;
-            gap: 15em;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         nav a {
@@ -303,20 +305,16 @@
             cursor: pointer;
         }
 
-        .social-icon:first-child {
+        .social-icons a:first-child .social-icon {
             filter: brightness(0) saturate(100%) invert(64%) sepia(26%) saturate(1847%) hue-rotate(192deg) brightness(96%) contrast(97%) drop-shadow(0 0 10px #0381ffff);
         }
 
-        .social-icon:nth-child(2) {
+        .social-icons a:nth-child(2) .social-icon {
             filter: brightness(0) saturate(100%) invert(79%) sepia(15%) saturate(1234%) hue-rotate(224deg) brightness(95%) contrast(98%) drop-shadow(0 0 10px #4316ffff);
         }
 
-        .social-icon:nth-child(3) {
+        .social-icons a:nth-child(3) .social-icon {
             filter: brightness(0) saturate(100%) invert(78%) sepia(37%) saturate(1456%) hue-rotate(261deg) brightness(97%) contrast(98%) drop-shadow(0 0 10px #ba0bffff);
-        }
-
-        .social-icon:nth-child(4) {
-            filter: brightness(0) saturate(100%) invert(26%) sepia(89%) saturate(1583%) hue-rotate(330deg) brightness(93%) contrast(86%) drop-shadow(0 0 10px crimson);
         }
 
         .social-icon:hover {
@@ -451,10 +449,15 @@
                 <img src="graphics/flying_mail.svg" alt="Flying mail" class="mail-right">
             </div>
             <div class="social-icons">
-                <img src="graphics/inkedin.svg" alt="LinkedIn" class="social-icon">
-                <img src="graphics/protonmail.svg" alt="ProtonMail" class="social-icon">
-                <img src="graphics/farcaster.svg" alt="Farcaster" class="social-icon">
-                <img src="graphics/github.svg" alt="GitHub" class="social-icon">
+                <a href="https://www.linkedin.com/in/jamison-w-orten/" target="_blank">
+                    <img src="graphics/inkedin.svg" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="mailto:jamisonorten@protonmail.com">
+                    <img src="graphics/protonmail.svg" alt="ProtonMail" class="social-icon">
+                </a>
+                <a href="https://github.com/Alditrus" target="_blank">
+                    <img src="graphics/github.svg" alt="GitHub" class="social-icon">
+                </a>
             </div>
         </section>
         
