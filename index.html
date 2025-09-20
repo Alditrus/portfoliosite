@@ -16,11 +16,7 @@
 
         body {
             font-family: 'Geologica', sans-serif;
-            background-color: #0A0A0A;
-            background-image: url('graphics/homepage_background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: #000000;
             color: white;
             min-height: 100vh;
             display: flex;
@@ -38,53 +34,20 @@
         .logo {
             margin-bottom: 40px;
             opacity: 1;
-            cursor: pointer;
         }
 
         .logo img {
             width: 300px;
             height: auto;
-            filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
+            filter: brightness(0);
             transition: filter 0.6s ease;
         }
 
         .logo.lit-up img {
             filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
-            animation: neonFlicker 1.2s ease-out;
+            transition: filter 0.8s ease;
         }
 
-        @keyframes neonFlicker {
-            0% {
-                filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
-            }
-            10% {
-                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
-            }
-            15% {
-                filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
-            }
-            25% {
-                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
-            }
-            30% {
-                filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(90deg) brightness(70%) contrast(120%);
-            }
-            40% {
-                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 2px #27FF00) drop-shadow(0 0 5px #27FF00);
-            }
-            50% {
-                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 8px #27FF00) drop-shadow(0 0 15px #27FF00);
-            }
-            60% {
-                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 3px #27FF00) drop-shadow(0 0 8px #27FF00);
-            }
-            80% {
-                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
-            }
-            100% {
-                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
-            }
-        }
 
         .welcome-text {
             margin-bottom: 60px;
@@ -165,7 +128,6 @@
                 width: 220px;
             }
 
-
             .welcome-text p {
                 font-size: 1rem;
             }
@@ -191,16 +153,11 @@
     <script>
         let hasActivated = false;
 
-        // Automatically light up logo and play sound after 3 seconds
+        // Automatically light up logo after 1 second
         setTimeout(() => {
             if (hasActivated) return;
 
             hasActivated = true;
-
-            // Create and play neon sound effect
-            const neonSound = new Audio('sound effects/neon_on.ogg');
-            neonSound.volume = 0.7;
-            neonSound.play();
 
             // Light up the logo
             document.querySelector('.logo').classList.add('lit-up');
@@ -210,7 +167,7 @@
                 document.querySelector('.welcome-text').classList.add('show');
                 document.querySelector('.enter-button').classList.add('show');
             }, 300);
-        }, 3000);
+        }, 1000);
 
         // Enter site button handler
         document.getElementById('enterSite').addEventListener('click', function(e) {
