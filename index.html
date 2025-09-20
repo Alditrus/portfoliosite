@@ -191,27 +191,26 @@
     <script>
         let hasActivated = false;
 
-        // Logo click handler
-        document.querySelector('.logo').addEventListener('click', function() {
+        // Automatically light up logo and play sound after 3 seconds
+        setTimeout(() => {
             if (hasActivated) return;
 
             hasActivated = true;
 
-            // Play neon sound effect
+            // Create and play neon sound effect
             const neonSound = new Audio('sound effects/neon_on.ogg');
-            neonSound.play().catch(error => {
-                console.log('Sound play failed:', error);
-            });
+            neonSound.volume = 0.7;
+            neonSound.play();
 
             // Light up the logo
-            this.classList.add('lit-up');
+            document.querySelector('.logo').classList.add('lit-up');
 
             // Show the rest of the content after logo lights up
             setTimeout(() => {
                 document.querySelector('.welcome-text').classList.add('show');
                 document.querySelector('.enter-button').classList.add('show');
             }, 300);
-        });
+        }, 3000);
 
         // Enter site button handler
         document.getElementById('enterSite').addEventListener('click', function(e) {
