@@ -6,7 +6,7 @@
     <title>Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&family=Tilt+Neon&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -23,6 +23,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
         
         .container {
@@ -30,18 +31,31 @@
             width: 70%;
             margin: 0 auto;
             padding: 20px;
+            padding-top: 160px;
             flex: 1;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
         
+        .fixed-header-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(to bottom, #0A0A0A 0%, #0A0A0A 70%, rgba(10, 10, 10, 0.9) 80%, rgba(10, 10, 10, 0.6) 90%, rgba(10, 10, 10, 0.2) 95%, rgba(10, 10, 10, 0) 100%);
+            padding-bottom: 10px;
+        }
+
         header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 0;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 10px 0;
         }
 
         .hamburger-menu {
@@ -129,10 +143,30 @@
             .container {
                 max-width: none;
                 width: 100%;
+                padding: 20px;
+                padding-top: 100px;
+            }
+
+            .fixed-header-nav {
+                width: 100%;
+                padding: 0;
+                padding-bottom: 10px;
+            }
+
+            header {
+                width: 100%;
+                padding: 10px 20px;
             }
 
             .hamburger-menu {
                 display: block;
+                position: absolute;
+                left: 20px;
+            }
+
+            .hamburger-menu img {
+                width: 40px;
+                height: 35px;
             }
 
             nav {
@@ -192,6 +226,8 @@
         nav {
             text-align: center;
             margin-bottom: 50px;
+            position: relative;
+            padding: 10px 0;
         }
         
         nav ul {
@@ -224,7 +260,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(10, 10, 10, 0.95);
-            z-index: 1000;
+            z-index: 1001;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -285,10 +321,176 @@
             text-align: center;
             opacity: 0.5;
         }
+
+        /* Hero section styles from index.html */
+        .hero-section {
+            text-align: center;
+            padding: 60px 0;
+            margin: 100px auto 100px;
+            position: relative;
+            max-width: 800px;
+        }
+
+        .hero-logo {
+            margin-bottom: 40px;
+            opacity: 1;
+            text-align: center;
+        }
+
+        .hero-logo img {
+            width: 200px;
+            height: auto;
+            filter: brightness(0.04);
+            transition: filter 0.6s ease;
+        }
+
+        .hero-logo.lit-up img {
+            filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            animation: neonFlicker 1.5s ease-out;
+        }
+
+        @keyframes neonFlicker {
+            0% {
+                filter: brightness(0.04);
+            }
+            10% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            15% {
+                filter: brightness(0.04);
+            }
+            25% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            30% {
+                filter: brightness(0.04);
+            }
+            40% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 2px #27FF00) drop-shadow(0 0 5px #27FF00);
+            }
+            50% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 8px #27FF00) drop-shadow(0 0 15px #27FF00);
+            }
+            60% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 3px #27FF00) drop-shadow(0 0 8px #27FF00);
+            }
+            80% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            100% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 0;
+            width: 1000px;
+            height: 800px;
+            background-image: url('graphics/homepage_background.png');
+            background-size: 1000px auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+        }
+
+        .hero-section.lit-up::before {
+            animation: backgroundFlicker 1.5s ease-out;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes backgroundFlicker {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            15% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 1;
+            }
+            30% {
+                opacity: 0;
+            }
+            40% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+            60% {
+                opacity: 0.8;
+            }
+            80% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 0.6;
+            }
+        }
+
+        .hero-welcome-text {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+        }
+
+        .hero-welcome-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-welcome-text h2 {
+            font-family: 'Koulen', sans-serif;
+            font-size: clamp(1.2rem, 6vw, 2.5rem);
+            font-weight: 300;
+            letter-spacing: 0.45em;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            border: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .hero-welcome-text p {
+            font-size: 20px;
+            letter-spacing: 0.45em;
+            line-height: 1.6;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: 'Koulen', sans-serif;
+            text-align: center;
+        }
+
+        @media (max-width: 980px) {
+            .hero-section {
+                padding: 40px 20px;
+                max-width: none;
+                width: 100%;
+            }
+
+            .hero-logo img {
+                width: 150px;
+            }
+
+            .hero-welcome-text p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="fixed-header-nav">
         <header>
             <button class="hamburger-menu" id="hamburgerBtn">
                 <img src="graphics/hamburger.svg" alt="Menu">
@@ -305,6 +507,9 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+    </div>
+
+    <div class="container">
 
         <div class="mobile-nav" id="mobileNav">
             <ul>
@@ -313,7 +518,19 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
-        
+
+        <!-- Hero section from index.html -->
+        <section class="hero-section">
+            <div class="hero-logo">
+                <img src="graphics/JO_neon.svg" alt="JO">
+            </div>
+
+            <div class="hero-welcome-text">
+                <h2>Jamison Orten</h2>
+                <p>UI UX - Experiential Designer</p>
+            </div>
+        </section>
+
         <section class="section">
             <div class="projects">
                 <div class="project">
@@ -506,6 +723,25 @@
 
             isDragging = false;
         });
+
+        // Hero section animation functionality
+        let heroHasActivated = false;
+
+        // Automatically light up hero logo after 1 second
+        setTimeout(() => {
+            if (heroHasActivated) return;
+
+            heroHasActivated = true;
+
+            // Light up the logo and background
+            document.querySelector('.hero-logo').classList.add('lit-up');
+            document.querySelector('.hero-section').classList.add('lit-up');
+
+            // Show the rest of the content after logo lights up
+            setTimeout(() => {
+                document.querySelector('.hero-welcome-text').classList.add('show');
+            }, 300);
+        }, 1000);
     </script>
 </body>
 </html>
