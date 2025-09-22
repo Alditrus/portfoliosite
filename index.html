@@ -29,6 +29,7 @@
             text-align: center;
             max-width: 800px;
             padding: 40px;
+            position: relative;
         }
 
         .logo {
@@ -45,7 +46,93 @@
 
         .logo.lit-up img {
             filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
-            transition: filter 0.8s ease;
+            animation: neonFlicker 1.5s ease-out;
+        }
+
+        @keyframes neonFlicker {
+            0% {
+                filter: brightness(0);
+            }
+            10% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            15% {
+                filter: brightness(0);
+            }
+            25% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            30% {
+                filter: brightness(0);
+            }
+            40% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 2px #27FF00) drop-shadow(0 0 5px #27FF00);
+            }
+            50% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 8px #27FF00) drop-shadow(0 0 15px #27FF00);
+            }
+            60% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 3px #27FF00) drop-shadow(0 0 8px #27FF00);
+            }
+            80% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+            100% {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
+            }
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 0;
+            width: 1000px;
+            height: 800px;
+            background-image: url('graphics/homepage_background.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .background-overlay.lit-up {
+            animation: backgroundFlicker 1.5s ease-out;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes backgroundFlicker {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            15% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 1;
+            }
+            30% {
+                opacity: 0;
+            }
+            40% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+            60% {
+                opacity: 0.8;
+            }
+            80% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 0.6;
+            }
         }
 
 
@@ -80,37 +167,6 @@
             font-family: 'Koulen', sans-serif;
         }
 
-        .enter-button {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
-        }
-
-        .enter-button.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: transparent;
-            border: none;
-            color: #27FF00;
-            text-decoration: none;
-            font-family: 'Tilt Neon', cursive;
-            font-size: 2rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            filter: brightness(0) saturate(100%) invert(92%) sepia(34%) saturate(835%) hue-rotate(45deg) brightness(106%) contrast(101%) drop-shadow(0 0 5px #27FF00) drop-shadow(0 0 10px #27FF00);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            filter: brightness(0) invert(1) drop-shadow(0 0 5px #ffffff) drop-shadow(0 0 10px #ffffff);
-            transform: scale(1.1);
-        }
 
         @keyframes fadeInUp {
             to {
@@ -140,14 +196,13 @@
             <img src="graphics/JO_neon.svg" alt="JO">
         </div>
 
+        <div class="background-overlay"></div>
+
         <div class="welcome-text">
             <h1>Jamison Orten</h1>
             <p>UI UX - Experiential Designer</p>
         </div>
 
-        <div class="enter-button">
-            <a href="landing.html" class="btn" id="enterSite">ENTER</a>
-        </div>
     </div>
 
     <script>
@@ -159,23 +214,16 @@
 
             hasActivated = true;
 
-            // Light up the logo
+            // Light up the logo and background
             document.querySelector('.logo').classList.add('lit-up');
+            document.querySelector('.background-overlay').classList.add('lit-up');
 
             // Show the rest of the content after logo lights up
             setTimeout(() => {
                 document.querySelector('.welcome-text').classList.add('show');
-                document.querySelector('.enter-button').classList.add('show');
             }, 300);
         }, 1000);
 
-        // Enter site button handler
-        document.getElementById('enterSite').addEventListener('click', function(e) {
-            e.preventDefault();
-
-            // Navigate to main portfolio
-            window.location.href = 'landing.html';
-        });
     </script>
 </body>
 </html>
