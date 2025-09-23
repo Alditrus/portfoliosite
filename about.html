@@ -6,7 +6,7 @@
     <title>Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Voltaire&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -29,7 +29,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            padding-top: 160px;
+            padding-top: 230px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -58,7 +58,7 @@
         .hamburger {
             display: none;
             position: absolute;
-            left: 20px;
+            left: 30px;
             cursor: pointer;
             z-index: 1000;
         }
@@ -102,7 +102,7 @@
         nav a {
             color: white;
             text-decoration: none;
-            font-family: 'Koulen', sans-serif;
+            font-family: 'Voltaire', sans-serif;
             font-size: 20px;
             text-transform: uppercase;
             letter-spacing: 0.45em;
@@ -150,7 +150,7 @@
         .mobile-nav a {
             color: white;
             text-decoration: none;
-            font-family: 'Koulen', sans-serif;
+            font-family: 'Voltaire', sans-serif;
             font-size: 30px;
             text-transform: uppercase;
             letter-spacing: 0.45em;
@@ -174,11 +174,12 @@
         }
         
         .about-text h2 {
-            font-family: 'Koulen', sans-serif;
-            font-size: 50px;
+            font-family: 'Voltaire', sans-serif;
+            font-size: 40px;
             font-weight: 300;
             margin-bottom: 20px;
             letter-spacing: 0.10em;
+            text-transform: uppercase;
         }
         
         .about-text p {
@@ -221,12 +222,13 @@
         }
         
         .experience-education h2 {
-            font-family: 'Koulen', sans-serif;
+            font-family: 'Voltaire', sans-serif;
             font-size: 50px;
             font-weight: 300;
             margin-bottom: 20px;
             letter-spacing: 0.10em;
             text-align: left;
+            text-transform: uppercase;
         }
         
         .experience-education ul {
@@ -276,7 +278,7 @@
                 max-width: none;
                 width: 100%;
                 padding: 20px;
-                padding-top: 100px;
+                padding-top: 140px;
             }
 
             .fixed-header-nav {
@@ -293,7 +295,7 @@
             .hamburger {
                 display: block;
                 position: absolute;
-                left: 20px;
+                left: 30px;
             }
 
             .hamburger svg {
@@ -345,10 +347,11 @@
         }
         
         footer p {
-            font-family: 'Koulen', sans-serif;
+            font-family: 'Voltaire', sans-serif;
             letter-spacing: 0.45em;
             text-align: center;
             opacity: 0.5;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -442,6 +445,14 @@
             const mobileNav = document.getElementById('mobileNav');
             mobileNav.classList.toggle('active');
         }
+
+        // Close mobile nav when clicking outside
+        const mobileNav = document.getElementById('mobileNav');
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>

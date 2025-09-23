@@ -6,7 +6,7 @@
     <title>Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Voltaire&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -29,7 +29,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            padding-top: 160px;
+            padding-top: 230px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -58,7 +58,7 @@
         .hamburger {
             display: none;
             position: absolute;
-            left: 20px;
+            left: 30px;
             cursor: pointer;
             z-index: 1000;
         }
@@ -102,7 +102,7 @@
         nav a {
             color: white;
             text-decoration: none;
-            font-family: 'Koulen', sans-serif;
+            font-family: 'Voltaire', sans-serif;
             font-size: 20px;
             text-transform: uppercase;
             letter-spacing: 0.45em;
@@ -150,7 +150,7 @@
         .mobile-nav a {
             color: white;
             text-decoration: none;
-            font-family: 'Koulen', sans-serif;
+            font-family: 'Voltaire', sans-serif;
             font-size: 30px;
             text-transform: uppercase;
             letter-spacing: 0.45em;
@@ -175,11 +175,12 @@
         }
         
         .about-text h2 {
-            font-family: 'Koulen', sans-serif;
+            font-family: 'Voltaire', sans-serif;
             font-size: 50px;
             font-weight: 300;
             margin-bottom: 20px;
             letter-spacing: 0.10em;
+            text-transform: uppercase;
         }
         
         .about-text p {
@@ -222,12 +223,13 @@
         }
         
         .experience-education h2 {
-            font-family: 'Koulen', sans-serif;
+            font-family: 'Voltaire', sans-serif;
             font-size: 50px;
             font-weight: 300;
             margin-bottom: 20px;
             letter-spacing: 0.10em;
             text-align: left;
+            text-transform: uppercase;
         }
         
         .experience-education ul {
@@ -277,16 +279,16 @@
             align-items: center;
             justify-content: center;
             gap: 30px;
-            margin-top: 50px;
             margin-bottom: 100px;
         }
 
         .contact-header h2 {
-            font-family: 'Koulen', sans-serif;
-            font-size: 60px;
+            font-family: 'Voltaire', sans-serif;
+            font-size: 50px;
             font-weight: 300;
-            letter-spacing: 0.10em;
+            letter-spacing: 0.45em;
             margin: 0;
+            text-transform: uppercase;
         }
 
         .mail-left, .mail-right {
@@ -331,9 +333,11 @@
             filter: brightness(0) saturate(100%) invert(78%) sepia(37%) saturate(1456%) hue-rotate(261deg) brightness(97%) contrast(98%) drop-shadow(0 0 10px #ba0bffff);
         }
 
-        .social-icon:hover {
+        .social-icons a:first-child .social-icon:hover,
+        .social-icons a:nth-child(2) .social-icon:hover,
+        .social-icons a:nth-child(3) .social-icon:hover {
             transform: scale(1.1);
-            filter: brightness(0) invert(1) drop-shadow(0 0 10px #ffffff);
+            filter: brightness(0) invert(1) drop-shadow(0 0 10px #ffffff) !important;
         }
         
         @media (max-width: 980px) {
@@ -341,7 +345,7 @@
                 max-width: none;
                 width: 100%;
                 padding: 20px;
-                padding-top: 100px;
+                padding-top: 140px;
             }
 
             .fixed-header-nav {
@@ -358,7 +362,7 @@
             .hamburger {
                 display: block;
                 position: absolute;
-                left: 20px;
+                left: 30px;
             }
 
             .hamburger svg {
@@ -396,7 +400,6 @@
             }
 
             .contact-header {
-                margin-top: 50px;
                 margin-bottom: 50px;
                 gap: 20px;
             }
@@ -438,10 +441,11 @@
         }
         
         footer p {
-            font-family: 'Koulen', sans-serif;
+            font-family: 'Voltaire', sans-serif;
             letter-spacing: 0.45em;
             text-align: center;
             opacity: 0.5;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -481,9 +485,7 @@
         
         <section class="section">
             <div class="contact-header">
-                <img src="graphics/flying_mail.svg" alt="Flying mail" class="mail-left">
                 <h2>Let's Talk</h2>
-                <img src="graphics/flying_mail.svg" alt="Flying mail" class="mail-right">
             </div>
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/jamison-w-orten/" target="_blank">
@@ -508,6 +510,14 @@
             const mobileNav = document.getElementById('mobileNav');
             mobileNav.classList.toggle('active');
         }
+
+        // Close mobile nav when clicking outside
+        const mobileNav = document.getElementById('mobileNav');
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
