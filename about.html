@@ -67,6 +67,15 @@
             width: 40px;
             height: 35px;
         }
+
+        .header-logo {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.1);
+            filter: brightness(0) invert(1) drop-shadow(0 0 10px #ffffff) !important;
+        }
         
         h1 {
             font-size: 3rem;
@@ -370,7 +379,7 @@
                 </svg>
             </div>
             <a href="index.html">
-                <img src="graphics/JO_neon.svg" alt="JO" style="max-width: auto; height: 70px; margin-bottom: 10px; margin-top: 10px; filter: brightness(0) invert(1); cursor: pointer;">
+                <img src="graphics/JO_neon.svg" alt="JO" class="header-logo" style="max-width: auto; height: 70px; margin-bottom: 10px; margin-top: 10px; filter: brightness(0) invert(1); cursor: pointer;">
             </a>
         </header>
 
@@ -387,6 +396,7 @@
 
         <div class="mobile-nav" id="mobileNav">
             <ul>
+                <li><a href="index.html" onclick="toggleMobileNav()">Home</a></li>
                 <li><a href="about.html" onclick="toggleMobileNav()">About</a></li>
                 <li><a href="work.html" onclick="toggleMobileNav()">Work</a></li>
                 <li><a href="contact.html" onclick="toggleMobileNav()">Contact</a></li>
