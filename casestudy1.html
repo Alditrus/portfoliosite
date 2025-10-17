@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Voltaire&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: left;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: white;
+            background-color: #0A0A0A;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 230px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .fixed-header-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(to bottom, #0A0A0A 0%, #0A0A0A 70%, rgba(10, 10, 10, 0.9) 80%, rgba(10, 10, 10, 0.6) 90%, rgba(10, 10, 10, 0.2) 95%, rgba(10, 10, 10, 0) 100%);
+            padding-bottom: 10px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .hamburger {
+            display: none;
+            position: absolute;
+            left: 30px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .hamburger svg {
+            width: 40px;
+            height: 35px;
+        }
+
+        .header-logo {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.1);
+            filter: brightness(0) invert(1) drop-shadow(0 0 10px #ffffff) !important;
+        }
+        
+        h1 {
+            font-family: 'Voltaire', sans-serif;
+            font-size: 40px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-family: 'Kreon', serif;
+            font-size: 30px;
+            font-weight: 100;
+            position: relative;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-family: 'Kreon', serif;
+            font-weight: 100;
+            position: relative;
+        }
+
+        p {
+            font-family: 'Geologica', sans-serif;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        
+        nav {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding: 10px 0;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: inline-flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Voltaire', sans-serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.45em;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ccc;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-nav.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .mobile-nav li {
+            text-align: center;
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Voltaire', sans-serif;
+            font-size: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.45em;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            color: #ccc;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+        
+        .about-text {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .about-text h2 {
+            font-family: 'Voltaire', sans-serif;
+            font-size: 40px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+        }
+        
+        .about-text p {
+            font-family: 'Geologica', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .about-image {
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .about-image .frame {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-image .portrait {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .experience-education {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .experience-education > div {
+            flex: 1;
+        }
+        
+        .experience-education h2 {
+            font-family: 'Voltaire', sans-serif;
+            font-size: 50px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 0.10em;
+            text-align: left;
+            text-transform: uppercase;
+        }
+        
+        .experience-education ul {
+            list-style-type: none;
+            margin-left: 0;
+            position: relative;
+        }
+        
+        .experience-education ul::before {
+            content: '';
+            position: absolute;
+            left: 1px;
+            top: 15px;
+            height: calc(100% - 120px);
+            width: 6px;
+            border-left: 8px dotted #555;
+        }
+        
+        .experience-education li {
+            margin-bottom: 30px;
+            font-family: 'Kreon', serif;
+            font-size: 30px;
+            font-weight: 100;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .experience-education li::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 15px;
+            width: .75em;
+            height: .75em;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        .experience-education li .subtitle {
+            color: #888888;
+            display: block;
+            font-size: 24px;
+        }
+        
+        @media (max-width: 980px) {
+            .container {
+                max-width: none;
+                width: 100%;
+                padding: 20px;
+                padding-top: 140px;
+            }
+
+            .fixed-header-nav {
+                width: 100%;
+                padding: 0;
+                padding-bottom: 10px;
+            }
+
+            header {
+                width: 100%;
+                padding: 10px 20px;
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                left: 30px;
+            }
+
+            .hamburger svg {
+                width: 40px;
+                height: 35px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .about-image .frame {
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 770px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-image {
+                align-self: center;
+            }
+
+            .experience-education {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .experience-education h2 {
+                text-align: center;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: auto;
+            padding-top: 40px;
+            border-top: 3px solid transparent;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, rgba(85, 85, 85, 0), #555, rgba(85, 85, 85, 0));
+        }
+        
+        footer p {
+            font-family: 'Voltaire', sans-serif;
+            letter-spacing: 0.45em;
+            text-align: center;
+            opacity: 0.5;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="fixed-header-nav">
+        <header>
+            <div class="hamburger" onclick="toggleMobileNav()">
+                <svg width="50" height="42" viewBox="0 0 50 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2H48" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M2 21.5H48" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="3.5" y1="40" x2="46.5" y2="40" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <a href="index.html">
+                <img src="graphics/JO_neon.svg" alt="JO" class="header-logo" style="max-width: auto; height: 70px; margin-bottom: 10px; margin-top: 10px; filter: brightness(0) invert(1); cursor: pointer;">
+            </a>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html" onclick="toggleMobileNav()">Home</a></li>
+                <li><a href="about.html" onclick="toggleMobileNav()">About</a></li>
+                <li><a href="work.html" onclick="toggleMobileNav()">Work</a></li>
+                <li><a href="contact.html" onclick="toggleMobileNav()">Contact</a></li>
+            </ul>
+        </div>
+
+        <section class="section">
+            <h1>User Research for a DAO Communications Platform pt. 2</h1>
+
+            <p>DAOs (Decentralized Autonomous Organizations) are a new, innovative, and emerging form of human organization that allows collectives of people to take action and accomplish goals together without the bottleneck of centralized processes. Powered mainly by blockchain technology, these organizations aim to solve and fix the many issues surrounding hierarchical and centralized forms of governance, eliminate creeping bureaucracy, and create a society that is more fair and equitable.</p>
+
+            <p>Last year, I designed a DAO platform to help contributors better organize and communicate. This was mainly to solve the issue of many DAOs using Discord as their primary communications platform, a platform that was mostly owned and maintained by a centralized corporation and did not respect data privacy. From that project, I learned that many contributors needed more than just a place to communicate and converse; they needed a tool that helped them access pertinent information that was essential to their respective roles. I therefore designed an online platform that fulfilled these user needs while also cutting down on noise and information overload, a common pain point for DAO contributors.</p>
+
+            <img src="graphics/casestudy1/oldproject.png" alt="Screenshot of original project" style="width: 100%; max-width: 800px; margin: 20px auto; display: block;">
+
+            <p>I originally designed the platform to operate on its own standalone website. However, for the second iteration, I've decided to build the platform as a web app on the decentralized social protocol Farcaster.</p>
+
+            <h2>What is Farcaster?</h2>
+
+            <p>Farcaster is a decentralized social protocol built atop the Ethereum blockchain. Unlike other social media platforms which are largely owned and maintained by large companies, Farcaster is a sufficiently decentralized social graph where each user owns their own ID and follower information. That way, if one app on the network is too restrictive or imposes too much censorship, users can migrate to other apps on the network without having to lose their data and follower count. Many different apps can be built on the Farcaster network, and over the past year, the developer team behind the protocol recently implemented the inclusion of "mini-apps", web apps that can be used and accessed directly from any client.</p>
+
+            <p>Due to Farcaster's already decentralized nature, I decided to design my DAO platform as a mini-app that can be accessed directly from Farcaster. Farcaster also has a thriving and innovative culture of DAO contributors and builders from which I recruited participants for user interviews to conduct my research and guide the design of my product.</p>
+
+            <h2>User Research</h2>
+
+            <h3>Research Methods:</h3>
+
+            <p>I conducted 7 in-depth user interviews with DAO contributors, each lasting 30-45 minutes. Participants were recruited from the Farcaster network and represented diverse DAO experiences.</p>
+
+            <h3>Participant Demographics:</h3>
+
+            <p>Similar to the last research cohort, my user demographic was primarily technologists and developers aged 20-30 who either had active experience in a DAO or who had participated in DAOs in the past. Roles included community managers, graphic designers/artists, and operational leads across various DAO types (art collectives, DeFi protocols, public goods funding).</p>
+
+            <h3>Research Objectives:</h3>
+
+            <p>With this second cohort, I wanted to focus less on designing an alternative to Discord and focus more on building a tool that directly addressed the user needs of DAO contributors. Therefore, I geared my interview questions more toward their intrinsic experiences with working in DAOs rather than their experience using Discord as a DAO platform.</p>
+
+            <h2>Key Findings</h2>
+
+            <p>Many of the findings I gathered from my research were very similar to my original research: the UI on Discord was too noisy and did not provide the information needed for a contributor's role. There was also a greater emphasis on the need for rich social connections and meaningful conversations with other people. Another major theme that was repeated in this study was the need for customization, particularly in regards to channels and notifications.</p>
+
+            <h3>Critical Insight:</h3>
+
+            <p>One need that emerged that wasn't as pronounced in my original project was the need for greater verification, better gating tools for certain channels, and more privacy features to create better alignment within the DAO. This would serve to cut down on noise and to keep bad actors at bay. Multiple participants shared stories of their DAOs being compromised by bad actors or struggling with spam and trolls due to insufficient verification systems.</p>
+
+            <p>[affinity chart plugin here]</p>
+
+            <h2>Personas</h2>
+
+            <p>I used this information to craft three distinct personas based on the different contributor roles my interviewees engaged in. I used these personas to guide the design of my product and determine what features needed to be included in the platform's architecture.</p>
+
+            <img src="graphics/casestudy1/Maya.png" alt="Maya persona" style="width: 100%; max-width: 600px; margin: 20px auto; display: block;">
+
+            <p><strong>Persona 1: "The Community Catalyst" (Maya)</strong> - Community manager motivated by building meaningful connections and positive societal impact. Primary need: streamlined communication across multiple DAOs without information overload.</p>
+
+            <img src="graphics/casestudy1/Robert.png" alt="Robert persona" style="width: 100%; max-width: 600px; margin: 20px auto; display: block;">
+
+            <p><strong>Persona 2: "The Creative Contributor" (Alex)</strong> - Artist/designer seeking fair compensation and cultural engagement. Primary need: showcase work, get feedback, and network without technical complexity.</p>
+
+            <img src="graphics/casestudy1/Jordan.png" alt="Jordan persona" style="width: 100%; max-width: 600px; margin: 20px auto; display: block;">
+
+            <p><strong>Persona 3: "The Mission-Driven Operator" (Jordan)</strong> - Business-oriented contributor focused on operational excellence. Primary need: efficient information access and accountability systems.</p>
+
+            <h2>Design Process</h2>
+
+            <p>Based on this data, I sketched out ideas for the design of the app. It included many features from the original project: a customizable dashboard where users can add and organize different widgets that give them needed information such as notifications, tasks, and contributor stats, and a dedicated forum for each DAO. The widgets within the dashboard would be primarily powered by AI, which would grab data from each necessary DAO and create a summary for the user to view.</p>
+
+            <h3>New Features & Design Rationale</h3>
+
+            <p>For this iteration, I added several new features based on the needs of my personas:</p>
+
+            <p>I greatly expanded the design of the forums and channels to include greater customization in the way of individual channel settings, including gating capabilities, verification settings, and permissions to allow greater control over which users were allowed to access certain channels based on specified credentials. These would in part be powered by Zero-Knowledge proofs to verify a contributor's credentials while also maintaining their privacy. This directly addresses the verification and privacy concerns raised by my user group.</p>
+
+            <p>I included easy creation and implementation of channel bots that would carry out certain tasks, such as governance notifications, vote tracking, and engagement monitoring. Multiple participants specifically praised bot functionality as essential for DAO operations.</p>
+
+            <img src="graphics/casestudy1/sketch1.png" alt="Design sketch 1" style="width: 100%; max-width: 800px; margin: 20px auto; display: block;">
+
+            <p>I added a crypto wallet to facilitate payment between contributors and to manage different DAO tokens, with transparent payment history and pending claims tracking. This addressed the user need for payment integration and supports the compensation transparency that contributors valued.</p>
+
+            <img src="graphics/casestudy1/sketch2.png" alt="Design sketch 2" style="width: 100%; max-width: 800px; margin: 20px auto; display: block;">
+
+            <p>I also included a DAO exploration page, similar to the exploration feature on Discord, which would allow contributors to explore and join other DAOs within the Farcaster network. The design prioritizes discovery through categories, personalized recommendations, and trending DAOs rather than overwhelming users with options. This supports cross-DAO networking that my user group valued while managing information overload through smart filtering.</p>
+
+            <h2>Wireframing & Testing</h2>
+
+            <p>After sketching out the app data flow and architecture, I then translated this into a rudimentary, interactive wireframe to get feedback on the structure and flow of the app. I primarily designed for mobile, as mini-apps within Farcaster were developed solely for mobile devices and the majority of users accessed the network from mobile. A mobile layout was also easier to work with compared to desktop.</p>
+
+            <p>[wireframe here]</p>
+
+            <h3>Usability Testing</h3>
+
+            <p>After allowing users to test the wireframe and getting feedback on usability, I made necessary changes and converted the wireframe into a final prototype. I conducted moderated usability tests with 5 participants who matched our persona profiles. Tasks included navigating between DAOs, finding specific information, adjusting notification settings, and exploring new DAOs.</p>
+
+            <p>• Moved the DAO Dashboard button to center position in bottom nav after observing users struggled to reach it in original left position</p>
+
+            <p>• Changed "Manage DAOs" icon from gear (confused with settings) to hamburger menu for clarity</p>
+
+            <p>• Added "peek" visual indicators on carousels to show more content is available</p>
+
+            <p>• Changed the global dashboard to better reflect information for all collective DAOs that the user participated in.</p>
+
+            <p>• Simplified channel settings to focus on most-requested features first (notifications, access, info)</p>
+
+            <p>[prototype here]</p>
+
+            <p>I'm personally very pleased with this secondary prototype. The layout and UI are generally cleaner and simpler than my last iteration. It also more greatly expands on the communication needs of contributors and concerns surrounding verification and privacy within communities, whereas my first iteration mainly focused on productivity tools. Throughout this second cohort, I realized that while clean and simple access to necessary information was indeed important, DAOs needed a way to better moderate and verify their members to create a more helpful working environment where users were far more aligned. While modern DAOs often aim for decentralization, they ultimately need greater control over who gets to participate in order to drive better alignment. This is a user need that was constant throughout my research.</p>
+
+            <h2>Conclusion</h2>
+
+            <p>This case study focused on improving and iterating upon my ongoing efforts to design and build a proper productivity and communications platform for DAOs. I learned that while contributors did need access to information with as little noise as possible and the ability to customize their experience, they more specifically needed the ability to customize their own communities to create better coordination within these collectives. This was a user need that was not apparent in my original research.</p>
+
+            <p>I do plan to convert this design into a fully functional application one day. While I mainly want to build the app within Farcaster due to its adequate network effects, I've also considered building the app through another protocol, Quilibrium. Built by ex-Farcaster developer Cassie Heart, Quilibrium is similar to Farcaster in that it's a decentralized social protocol, but unlike Farcaster, has a far greater emphasis on privacy. As this is a main user need for my user group, I will be exploring the possibility of building on the Q network while also porting the interface of the app through Farcaster clients.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Jamison Orten. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Close mobile nav when clicking outside
+        const mobileNav = document.getElementById('mobileNav');
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
