@@ -7,6 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Voltaire&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Preload critical images for faster initial load -->
+    <link rel="preload" as="image" href="graphics/JO_neon.svg">
+    <link rel="preload" as="image" href="graphics/portrait.jpg">
+    <link rel="preload" as="image" href="graphics/picture_frame.png">
+
     <style>
         * {
             margin: 0;
@@ -218,6 +224,46 @@
             max-height: 80%;
             object-fit: cover;
             z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+
+        .about-image .portrait.loaded {
+            opacity: 1;
+        }
+
+        .about-image .frame {
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+
+        .about-image .frame.loaded {
+            opacity: 1;
+        }
+
+        /* Loading placeholder for portrait image */
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .about-image.image-loaded::before {
+            display: none;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
         
         .experience-education {
@@ -467,6 +513,42 @@
                 mobileNav.classList.remove('active');
             }
         });
+
+        // Image loading handler for smooth transitions
+        function handleImageLoad() {
+            const portrait = document.querySelector('.about-image .portrait');
+            const frame = document.querySelector('.about-image .frame');
+            const aboutImage = document.querySelector('.about-image');
+
+            if (portrait) {
+                if (portrait.complete) {
+                    portrait.classList.add('loaded');
+                } else {
+                    portrait.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                    });
+                }
+            }
+
+            if (frame) {
+                if (frame.complete) {
+                    frame.classList.add('loaded');
+                    aboutImage.classList.add('image-loaded');
+                } else {
+                    frame.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                        aboutImage.classList.add('image-loaded');
+                    });
+                }
+            }
+        }
+
+        // Run on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', handleImageLoad);
+        } else {
+            handleImageLoad();
+        }
     </script>
 </body>
 </html>

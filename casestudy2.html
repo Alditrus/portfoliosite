@@ -7,6 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Voltaire&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Preload critical images for faster initial load -->
+    <link rel="preload" as="image" href="graphics/JO_neon.svg">
+    <link rel="preload" as="image" href="graphics/casestudy1/hero_image.png">
+
     <style>
         * {
             margin: 0;
@@ -407,6 +412,45 @@
             width: 100%;
         }
 
+        /* Image loading states */
+        .image-container img:first-child,
+        .hero-container img {
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+
+        .image-container img:first-child.loaded,
+        .hero-container img.loaded {
+            opacity: 1;
+        }
+
+        /* Loading placeholder for images */
+        .image-container::before,
+        .hero-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .image-container.image-loaded::before,
+        .hero-container.image-loaded::before {
+            display: none;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
         .image-container.persona {
             max-width: 600px;
         }
@@ -592,7 +636,7 @@
 
             <div class="image-wrapper">
                 <div class="image-container">
-                    <img src="graphics/casestudy1/oldproject.png" alt="Screenshot of original project">
+                    <img src="graphics/casestudy1/oldproject.png" alt="Screenshot of original project" loading="lazy">
                     <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/oldproject.png')">
                 </div>
             </div>
@@ -629,7 +673,7 @@
 
             <div class="image-wrapper">
                 <div class="image-container">
-                    <img src="graphics/casestudy1/DAO Affinity Chart.jpg" alt="DAO Affinity Chart">
+                    <img src="graphics/casestudy1/DAO Affinity Chart.jpg" alt="DAO Affinity Chart" loading="lazy">
                     <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/DAO Affinity Chart.jpg')">
                 </div>
             </div>
@@ -640,7 +684,7 @@
 
             <div class="image-wrapper">
                 <div class="image-container">
-                    <img src="graphics/casestudy1/Maya.png" alt="Maya persona">
+                    <img src="graphics/casestudy1/Maya.png" alt="Maya persona" loading="lazy">
                     <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/Maya.png')">
                 </div>
             </div>
@@ -649,7 +693,7 @@
 
             <div class="image-wrapper">
                 <div class="image-container">
-                    <img src="graphics/casestudy1/Robert.png" alt="Robert persona">
+                    <img src="graphics/casestudy1/Robert.png" alt="Robert persona" loading="lazy">
                     <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/Robert.png')">
                 </div>
             </div>
@@ -658,7 +702,7 @@
 
             <div class="image-wrapper">
                 <div class="image-container">
-                    <img src="graphics/casestudy1/Jordan.png" alt="Jordan persona">
+                    <img src="graphics/casestudy1/Jordan.png" alt="Jordan persona" loading="lazy">
                     <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/Jordan.png')">
                 </div>
             </div>
@@ -679,7 +723,7 @@
 
             <div class="image-wrapper">
                 <div class="image-container">
-                    <img src="graphics/casestudy1/sketch1.png" alt="Design sketch 1">
+                    <img src="graphics/casestudy1/sketch1.png" alt="Design sketch 1" loading="lazy">
                     <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/sketch1.png')">
                 </div>
             </div>
@@ -688,7 +732,7 @@
 
             <div class="image-wrapper">
                 <div class="image-container">
-                    <img src="graphics/casestudy1/sketch2.png" alt="Design sketch 2">
+                    <img src="graphics/casestudy1/sketch2.png" alt="Design sketch 2" loading="lazy">
                     <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/sketch2.png')">
                 </div>
             </div>
@@ -876,6 +920,59 @@
                 closeImageOverlay();
             }
         });
+
+        // Image loading handler for smooth transitions
+        function handleImageLoad() {
+            const heroImage = document.querySelector('.hero-container img');
+            const heroContainer = document.querySelector('.hero-container');
+            const imageContainers = document.querySelectorAll('.image-container');
+
+            // Handle hero image
+            if (heroImage) {
+                if (heroImage.complete) {
+                    heroImage.classList.add('loaded');
+                    heroContainer.classList.add('image-loaded');
+                } else {
+                    heroImage.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                        heroContainer.classList.add('image-loaded');
+                    });
+                    heroImage.addEventListener('error', function() {
+                        heroContainer.classList.add('image-loaded');
+                    });
+                }
+            }
+
+            // Handle image containers
+            imageContainers.forEach(container => {
+                const img = container.querySelector('img:first-child');
+                if (img) {
+                    if (img.complete) {
+                        img.classList.add('loaded');
+                        container.classList.add('image-loaded');
+                    } else {
+                        img.addEventListener('load', function() {
+                            this.classList.add('loaded');
+                            container.classList.add('image-loaded');
+                        });
+                        img.addEventListener('error', function() {
+                            container.classList.add('image-loaded');
+                        });
+                    }
+                }
+            });
+        }
+
+        // Run on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', handleImageLoad);
+        } else {
+            handleImageLoad();
+        }
+
+        // Re-run when new images might load
+        const observer = new MutationObserver(handleImageLoad);
+        observer.observe(document.body, { childList: true, subtree: true });
     </script>
 </body>
 </html>

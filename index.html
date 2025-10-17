@@ -7,6 +7,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Voltaire&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&family=Tilt+Neon&display=swap" rel="stylesheet">
+
+    <!-- Preload critical images for faster initial load -->
+    <link rel="preload" as="image" href="graphics/JO_neon.svg">
+    <link rel="preload" as="image" href="graphics/homepage_background.png">
+    <link rel="preload" as="image" href="graphics/casestudy1.png">
+    <link rel="preload" as="image" href="graphics/casestudy2.png">
+    <link rel="preload" as="image" href="graphics/casestudy3.png">
+    <link rel="preload" as="image" href="graphics/marquee.svg">
+
     <style>
         * {
             margin: 0;
@@ -218,6 +227,41 @@
             max-height: 80%;
             object-fit: cover;
             z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+
+        .project-image .project-content.loaded {
+            opacity: 1;
+        }
+
+        /* Loading placeholder for images */
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .project-image.image-loaded::before {
+            display: none;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
         }
         
         .project h3 {
@@ -588,8 +632,8 @@
                         <div class="project">
                             <a href="casestudy3.html">
                                 <div class="project-image">
-                                    <img src="graphics/casestudy3.png" alt="Case Study 3" class="project-content">
-                                    <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
+                                    <img src="graphics/casestudy3.png" alt="Case Study 3" class="project-content" loading="lazy">
+                                    <img src="graphics/marquee.svg" alt="Frame" class="project-frame" loading="lazy">
                                 </div>
                             </a>
                             <h3>Job Search Website</h3>
@@ -599,8 +643,8 @@
                         <div class="project">
                             <a href="casestudy1.html">
                                 <div class="project-image">
-                                    <img src="graphics/casestudy1.png" alt="Case Study 1" class="project-content">
-                                    <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
+                                    <img src="graphics/casestudy1.png" alt="Case Study 1" class="project-content" loading="lazy">
+                                    <img src="graphics/marquee.svg" alt="Frame" class="project-frame" loading="lazy">
                                 </div>
                             </a>
                             <h3>DAO Application v.1</h3>
@@ -609,8 +653,8 @@
                         <div class="project">
                             <a href="casestudy2.html">
                                 <div class="project-image">
-                                    <img src="graphics/casestudy2.png" alt="Case Study 2" class="project-content">
-                                    <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
+                                    <img src="graphics/casestudy2.png" alt="Case Study 2" class="project-content" loading="lazy">
+                                    <img src="graphics/marquee.svg" alt="Frame" class="project-frame" loading="lazy">
                                 </div>
                             </a>
                             <h3>DAO Application v.2</h3>
@@ -619,8 +663,8 @@
                         <div class="project">
                             <a href="casestudy3.html">
                                 <div class="project-image">
-                                    <img src="graphics/casestudy3.png" alt="Case Study 3" class="project-content">
-                                    <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
+                                    <img src="graphics/casestudy3.png" alt="Case Study 3" class="project-content" loading="lazy">
+                                    <img src="graphics/marquee.svg" alt="Frame" class="project-frame" loading="lazy">
                                 </div>
                             </a>
                             <h3>Job Search Website</h3>
@@ -630,8 +674,8 @@
                         <div class="project">
                             <a href="casestudy1.html">
                                 <div class="project-image">
-                                    <img src="graphics/casestudy1.png" alt="Case Study 1" class="project-content">
-                                    <img src="graphics/marquee.svg" alt="Frame" class="project-frame">
+                                    <img src="graphics/casestudy1.png" alt="Case Study 1" class="project-content" loading="lazy">
+                                    <img src="graphics/marquee.svg" alt="Frame" class="project-frame" loading="lazy">
                                 </div>
                             </a>
                             <h3>DAO Application v.1</h3>
@@ -771,6 +815,41 @@
                 document.querySelector('.hero-welcome-text').classList.add('show');
             }, 300);
         }, 1000);
+
+        // Image loading handler for smooth transitions
+        function handleImageLoad() {
+            const images = document.querySelectorAll('.project-image .project-content');
+
+            images.forEach(img => {
+                if (img.complete) {
+                    // Image already loaded
+                    img.classList.add('loaded');
+                    img.parentElement.classList.add('image-loaded');
+                } else {
+                    // Image still loading
+                    img.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                        this.parentElement.classList.add('image-loaded');
+                    });
+
+                    // Handle error case
+                    img.addEventListener('error', function() {
+                        this.parentElement.classList.add('image-loaded');
+                    });
+                }
+            });
+        }
+
+        // Run on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', handleImageLoad);
+        } else {
+            handleImageLoad();
+        }
+
+        // Re-run when new images might load (for carousel)
+        const observer = new MutationObserver(handleImageLoad);
+        observer.observe(document.body, { childList: true, subtree: true });
     </script>
 </body>
 </html>
