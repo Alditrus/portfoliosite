@@ -26,7 +26,8 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1500px;
+            width: 50%;
             margin: 0 auto;
             padding: 20px;
             padding-top: 230px;
@@ -392,6 +393,135 @@
             opacity: 0.5;
             text-transform: uppercase;
         }
+
+        /* Image expand functionality styles */
+        .image-wrapper {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .image-container.persona {
+            max-width: 600px;
+        }
+
+        .image-container img:first-child {
+            width: 100%;
+            display: block;
+        }
+
+        .expand-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            z-index: 10;
+        }
+
+        .expand-button:hover {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .image-overlay img {
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .image-overlay img:first-child {
+            cursor: zoom-in;
+        }
+
+        .image-overlay img:first-child.zoomed {
+            cursor: grab;
+            max-width: none;
+            max-height: none;
+            width: auto;
+            height: auto;
+        }
+
+        .image-overlay img:first-child.zoomed.dragging {
+            cursor: grabbing;
+        }
+
+        .exit-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            z-index: 2001;
+        }
+
+        .exit-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero image styles */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .hero-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .hero-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.5) 50%, #0A0A0A 100%);
+            pointer-events: none;
+        }
+
+        .hero-container h1 {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            margin: 0;
+            padding: 0 20px;
+            text-shadow: 0 6px 20px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.9);
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -429,14 +559,28 @@
             </ul>
         </div>
 
+        <!-- Image overlay for expanded view -->
+        <div class="image-overlay" id="imageOverlay">
+            <img id="expandedImage" src="" alt="Expanded view" onclick="toggleZoom(event)">
+            <img src="graphics/exit_button.svg" alt="Close" class="exit-button" onclick="closeImageOverlay()">
+        </div>
+
         <section class="section">
-            <h1>User Research for a DAO Communications Platform pt. 2</h1>
+            <div class="hero-container">
+                <img src="graphics/casestudy1/hero_image.png" alt="DAO Communications Platform Hero">
+                <h1>User Research for a DAO Communications Platform pt. 2</h1>
+            </div>
 
             <p>DAOs (Decentralized Autonomous Organizations) are a new, innovative, and emerging form of human organization that allows collectives of people to take action and accomplish goals together without the bottleneck of centralized processes. Powered mainly by blockchain technology, these organizations aim to solve and fix the many issues surrounding hierarchical and centralized forms of governance, eliminate creeping bureaucracy, and create a society that is more fair and equitable.</p>
 
             <p>Last year, I designed a DAO platform to help contributors better organize and communicate. This was mainly to solve the issue of many DAOs using Discord as their primary communications platform, a platform that was mostly owned and maintained by a centralized corporation and did not respect data privacy. From that project, I learned that many contributors needed more than just a place to communicate and converse; they needed a tool that helped them access pertinent information that was essential to their respective roles. I therefore designed an online platform that fulfilled these user needs while also cutting down on noise and information overload, a common pain point for DAO contributors.</p>
 
-            <img src="graphics/casestudy1/oldproject.png" alt="Screenshot of original project" style="width: 100%; max-width: 800px; margin: 20px auto; display: block;">
+            <div class="image-wrapper">
+                <div class="image-container">
+                    <img src="graphics/casestudy1/oldproject.png" alt="Screenshot of original project">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/oldproject.png')">
+                </div>
+            </div>
 
             <p>I originally designed the platform to operate on its own standalone website. However, for the second iteration, I've decided to build the platform as a web app on the decentralized social protocol Farcaster.</p>
 
@@ -468,21 +612,41 @@
 
             <p>One need that emerged that wasn't as pronounced in my original project was the need for greater verification, better gating tools for certain channels, and more privacy features to create better alignment within the DAO. This would serve to cut down on noise and to keep bad actors at bay. Multiple participants shared stories of their DAOs being compromised by bad actors or struggling with spam and trolls due to insufficient verification systems.</p>
 
-            <p>[affinity chart plugin here]</p>
+            <div class="image-wrapper">
+                <div class="image-container">
+                    <img src="graphics/casestudy1/DAO Affinity Chart.jpg" alt="DAO Affinity Chart">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/DAO Affinity Chart.jpg')">
+                </div>
+            </div>
 
             <h2>Personas</h2>
 
             <p>I used this information to craft three distinct personas based on the different contributor roles my interviewees engaged in. I used these personas to guide the design of my product and determine what features needed to be included in the platform's architecture.</p>
 
-            <img src="graphics/casestudy1/Maya.png" alt="Maya persona" style="width: 100%; max-width: 600px; margin: 20px auto; display: block;">
+            <div class="image-wrapper">
+                <div class="image-container">
+                    <img src="graphics/casestudy1/Maya.png" alt="Maya persona">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/Maya.png')">
+                </div>
+            </div>
 
             <p><strong>Persona 1: "The Community Catalyst" (Maya)</strong> - Community manager motivated by building meaningful connections and positive societal impact. Primary need: streamlined communication across multiple DAOs without information overload.</p>
 
-            <img src="graphics/casestudy1/Robert.png" alt="Robert persona" style="width: 100%; max-width: 600px; margin: 20px auto; display: block;">
+            <div class="image-wrapper">
+                <div class="image-container">
+                    <img src="graphics/casestudy1/Robert.png" alt="Robert persona">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/Robert.png')">
+                </div>
+            </div>
 
-            <p><strong>Persona 2: "The Creative Contributor" (Alex)</strong> - Artist/designer seeking fair compensation and cultural engagement. Primary need: showcase work, get feedback, and network without technical complexity.</p>
+            <p><strong>Persona 2: "The Creative Contributor" (Robert)</strong> - Artist/designer seeking fair compensation and cultural engagement. Primary need: showcase work, get feedback, and network without technical complexity.</p>
 
-            <img src="graphics/casestudy1/Jordan.png" alt="Jordan persona" style="width: 100%; max-width: 600px; margin: 20px auto; display: block;">
+            <div class="image-wrapper">
+                <div class="image-container">
+                    <img src="graphics/casestudy1/Jordan.png" alt="Jordan persona">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/Jordan.png')">
+                </div>
+            </div>
 
             <p><strong>Persona 3: "The Mission-Driven Operator" (Jordan)</strong> - Business-oriented contributor focused on operational excellence. Primary need: efficient information access and accountability systems.</p>
 
@@ -498,11 +662,21 @@
 
             <p>I included easy creation and implementation of channel bots that would carry out certain tasks, such as governance notifications, vote tracking, and engagement monitoring. Multiple participants specifically praised bot functionality as essential for DAO operations.</p>
 
-            <img src="graphics/casestudy1/sketch1.png" alt="Design sketch 1" style="width: 100%; max-width: 800px; margin: 20px auto; display: block;">
+            <div class="image-wrapper">
+                <div class="image-container">
+                    <img src="graphics/casestudy1/sketch1.png" alt="Design sketch 1">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/sketch1.png')">
+                </div>
+            </div>
 
             <p>I added a crypto wallet to facilitate payment between contributors and to manage different DAO tokens, with transparent payment history and pending claims tracking. This addressed the user need for payment integration and supports the compensation transparency that contributors valued.</p>
 
-            <img src="graphics/casestudy1/sketch2.png" alt="Design sketch 2" style="width: 100%; max-width: 800px; margin: 20px auto; display: block;">
+            <div class="image-wrapper">
+                <div class="image-container">
+                    <img src="graphics/casestudy1/sketch2.png" alt="Design sketch 2">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy1/sketch2.png')">
+                </div>
+            </div>
 
             <p>I also included a DAO exploration page, similar to the exploration feature on Discord, which would allow contributors to explore and join other DAOs within the Farcaster network. The design prioritizes discovery through categories, personalized recommendations, and trending DAOs rather than overwhelming users with options. This supports cross-DAO networking that my user group valued while managing information overload through smart filtering.</p>
 
@@ -553,6 +727,134 @@
         mobileNav.addEventListener('click', (e) => {
             if (e.target === mobileNav) {
                 mobileNav.classList.remove('active');
+            }
+        });
+
+        // Image expand functionality
+        function expandImage(imageSrc) {
+            const overlay = document.getElementById('imageOverlay');
+            const expandedImage = document.getElementById('expandedImage');
+            expandedImage.src = imageSrc;
+            expandedImage.classList.remove('zoomed');
+            expandedImage.style.transform = 'scale(1)';
+            overlay.classList.add('active');
+        }
+
+        function closeImageOverlay() {
+            const overlay = document.getElementById('imageOverlay');
+            const expandedImage = document.getElementById('expandedImage');
+            overlay.classList.remove('active');
+            expandedImage.classList.remove('zoomed');
+            expandedImage.style.transform = 'scale(1)';
+        }
+
+        // Zoom and pan variables
+        let isDragging = false;
+        let startX, startY;
+        let currentTranslateX = 0;
+        let currentTranslateY = 0;
+
+        // Zoom functionality
+        function toggleZoom(event) {
+            event.stopPropagation();
+            const img = document.getElementById('expandedImage');
+
+            if (!img.classList.contains('zoomed')) {
+                // Zoom in
+                img.classList.add('zoomed');
+                const rect = img.getBoundingClientRect();
+                const x = event.clientX || (event.touches && event.touches[0].clientX);
+                const y = event.clientY || (event.touches && event.touches[0].clientY);
+                const xPos = x - rect.left;
+                const yPos = y - rect.top;
+                const xPercent = (xPos / rect.width) * 100;
+                const yPercent = (yPos / rect.height) * 100;
+                img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+                currentTranslateX = 0;
+                currentTranslateY = 0;
+                img.style.transform = 'scale(2)';
+            } else {
+                // Zoom out
+                img.classList.remove('zoomed');
+                img.style.transform = 'scale(1)';
+                currentTranslateX = 0;
+                currentTranslateY = 0;
+            }
+        }
+
+        // Pan functionality
+        const expandedImage = document.getElementById('expandedImage');
+
+        expandedImage.addEventListener('mousedown', function(e) {
+            if (this.classList.contains('zoomed')) {
+                isDragging = true;
+                this.classList.add('dragging');
+                startX = e.clientX - currentTranslateX;
+                startY = e.clientY - currentTranslateY;
+                e.preventDefault();
+            }
+        });
+
+        expandedImage.addEventListener('mousemove', function(e) {
+            if (isDragging && this.classList.contains('zoomed')) {
+                e.preventDefault();
+                const x = e.clientX - startX;
+                const y = e.clientY - startY;
+                currentTranslateX = x;
+                currentTranslateY = y;
+                this.style.transform = `scale(2) translate(${x}px, ${y}px)`;
+            }
+        });
+
+        expandedImage.addEventListener('mouseup', function(e) {
+            if (isDragging) {
+                isDragging = false;
+                this.classList.remove('dragging');
+            }
+        });
+
+        expandedImage.addEventListener('mouseleave', function() {
+            if (isDragging) {
+                isDragging = false;
+                this.classList.remove('dragging');
+            }
+        });
+
+        // Touch events for mobile
+        expandedImage.addEventListener('touchstart', function(e) {
+            if (this.classList.contains('zoomed')) {
+                isDragging = true;
+                startX = e.touches[0].clientX - currentTranslateX;
+                startY = e.touches[0].clientY - currentTranslateY;
+            }
+        });
+
+        expandedImage.addEventListener('touchmove', function(e) {
+            if (isDragging && this.classList.contains('zoomed')) {
+                e.preventDefault();
+                const x = e.touches[0].clientX - startX;
+                const y = e.touches[0].clientY - startY;
+                currentTranslateX = x;
+                currentTranslateY = y;
+                this.style.transform = `scale(2) translate(${x}px, ${y}px)`;
+            }
+        });
+
+        expandedImage.addEventListener('touchend', function() {
+            isDragging = false;
+        });
+
+        // Click overlay background to close
+        document.getElementById('imageOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageOverlay();
+            }
+        });
+
+        // Close overlay with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeImageOverlay();
             }
         });
     </script>
