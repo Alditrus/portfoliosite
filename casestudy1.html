@@ -522,6 +522,21 @@
             text-shadow: 0 6px 20px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.9);
             z-index: 1;
         }
+
+        /* Figma embed styles */
+        .figma-embed {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .figma-embed iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -684,7 +699,9 @@
 
             <p>After sketching out the app data flow and architecture, I then translated this into a rudimentary, interactive wireframe to get feedback on the structure and flow of the app. I primarily designed for mobile, as mini-apps within Farcaster were developed solely for mobile devices and the majority of users accessed the network from mobile. A mobile layout was also easier to work with compared to desktop.</p>
 
-            <p>[wireframe here]</p>
+            <div class="figma-embed">
+                <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FEoEvFV1LnUWPBVyL3DMhjM%2FDAO-Platform-v2.0%3Ft%3D6vnvhTa0LdUBQp5V-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26page-id%3D0%253A1%26node-id%3D4-353%26starting-point-node-id%3D4%253A353" allowfullscreen></iframe>
+            </div>
 
             <h3>Usability Testing</h3>
 
@@ -700,7 +717,9 @@
 
             <p>• Simplified channel settings to focus on most-requested features first (notifications, access, info)</p>
 
-            <p>[prototype here]</p>
+            <div class="figma-embed">
+                <iframe src="https://embed.figma.com/proto/iHcjy4yDoqhOKkiPicDsua/DAO-Platform-v2.0-Final-Prototype?scaling=scale-down&content-scaling=fixed&page-id=0%3A1&node-id=4-353&starting-point-node-id=4%3A353&show-proto-sidebar=1&embed-host=share" allowfullscreen></iframe>
+            </div>
 
             <p>I'm personally very pleased with this secondary prototype. The layout and UI are generally cleaner and simpler than my last iteration. It also more greatly expands on the communication needs of contributors and concerns surrounding verification and privacy within communities, whereas my first iteration mainly focused on productivity tools. Throughout this second cohort, I realized that while clean and simple access to necessary information was indeed important, DAOs needed a way to better moderate and verify their members to create a more helpful working environment where users were far more aligned. While modern DAOs often aim for decentralization, they ultimately need greater control over who gets to participate in order to drive better alignment. This is a user need that was constant throughout my research.</p>
 
