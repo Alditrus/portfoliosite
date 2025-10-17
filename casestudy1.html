@@ -582,134 +582,94 @@
 
         <section class="section">
             <div class="hero-container">
-                <img src="graphics/casestudy3/hero_image.png" alt="Job Search Platform Hero">
-                <h1>Designing a Job Searching and Application Platform</h1>
+                <img src="graphics/casestudy2/hero_image.png" alt="DAO Communications Platform Hero">
+                <h1>User Research for a DAO Communications Platform</h1>
             </div>
 
-            <p>This study was done as part of a course by General Assembly. The challenge was to design a website for a startup that wants to help people find jobs. My users would need to be able to find relevant jobs, submit their information, and track their applications.</p>
+            <h2>What is a DAO?</h2>
 
-            <p>When applying for jobs, candidates struggle with three critical challenges: unclear communication from recruiters who often ghost applicants, difficulty identifying jobs that match their qualifications, and no centralized way to track multiple applications. This creates a frustrating, anxiety-inducing experience that extends the time it takes to secure employment. The goal of my research was to build a platform that addressed these pain points and create a smoother, more seamless experience for job-seekers in finding the right career opportunities</p>
+            <p>DAOs (Decentralized Autonomous Organizations) are blockchain-powered organizations governed collectively without central control. They utilize smart contracts to establish rules, ensuring transparency and democratic decision-making. While promising increased efficiency and reduced bureaucracy, DAOs remain in early stages of development.</p>
 
-            <p>I began my creating a research plan for what type of user research I would conduct and then drafted a discussion guide of interview questions to help guide my interviews with users. I then created an affinity chart of my findings, synthesized that information into a user persona, and used that persona as a guide to create a prototype of the platform.</p>
+            <p>Currently, many DAOs rely on traditional platforms like Discord for communication. However, Discord's private corporate ownership contradicts DAO principles of decentralization. This dependency creates risks, as changes to Discord could potentially compromise DAO operations, highlighting the need for truly decentralized communication tools.</p>
 
-            <h2>Research</h2>
+            <p>Through this project, I aimed to evaluate the strengths and weaknesses of Discord and other legacy tools to design an alternative blockchain-distributed communications platform.</p>
 
-            <p>My target user group was people who were looking for a job, either due to unemployment, looking to start their careers after college, or looking for a career switch. From my research, I wanted to find out what their experience was like searching for and applying to jobs, what their biggest pain points were with this process, and what additions and improvements they would want to see from a job application platform compared to existing platforms.</p>
+            <h2>User Research</h2>
 
-            <p>I decided to conduct face-to-face interviews as they allowed me to observe verbal, as well as nonverbal, emotional cues. I was looking for very clear emotional reactions, as those would point toward the user needs and pain points that needed the most attention.</p>
+            <p>My user group consisted of individuals from Farcaster, a decentralized social protocol. Participants were primarily developers and technologists aged 20-30 years old who were either actively involved in DAOs or had previous DAO experience.</p>
 
-            <p>I interviewed three different individuals who were looking for work due to layoffs, all of them male and in their 20s-30s. I was not able to meet with one of the participants face-to-face due to proximity, so we instead conducted our interview over Zoom.</p>
+            <p>Users appreciated Discord's channel customization features and the ability to configure channel bots for information organization. However, they expressed frustration with the difficulty of accessing and organizing important information efficiently. Many reported experiencing "Discord burnout" due to information overload, highlighting the need for clear communication and easily accessible task-related information.</p>
 
             <div class="image-wrapper">
                 <div class="image-container">
-                    <img src="graphics/casestudy3/job site Affinity Board.jpg" alt="Job Site Affinity Board">
-                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy3/job site Affinity Board.jpg')">
+                    <img src="graphics/casestudy2/Affinity Diagram.jpg" alt="Affinity Diagram">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy2/Affinity Diagram.jpg')">
                 </div>
             </div>
 
-            <p>From these interviews, I uncovered a few important trends. The main overarching trend that came up throughout my interviews was a desire for more clear, personal communication with employers. 100% of the users were frustrated when they were not given a clear answer from recruiters who often ghosted them or gave them vague feedback regarding their rejection. They did not enjoy the experience of receiving an impersonal screening email and wanted more intimate communication with the individuals who were evaluating their applications. This was by far the biggest pain point and user need that was expressed throughout my research.</p>
-
-            <p><em>"I just want to know where I stand. Even a rejection is better than wondering for weeks."</em></p>
-
-            <p>They also expressed the need for better job recommendations that matched their qualifications, with one interviewee stating the pain point of not knowing what the job qualifications were on a job listing from the get-go. Another interesting trend was the desire for resources that helped them with finding, applying, and interviewing for job opportunities.</p>
-
-            <p><em>"It would be cool to have a feature that gives tips and tricks about how to apply, search, and prepare for a job. I feel like that would help me in successfully getting the job I want"</em></p>
-
-            <p>When asked about what improvements they would like to see in a job searching platform, answers included better search filters based on qualifications and keywords within the job listings themselves, as well as the ability to edit resumes for specific job listings.</p>
-
-            <p>In regard to tracking applications and watching their progress, all users often mentioned just using email to keep track of different applications they had applied to. This reflected the need for a dedicated space where users could easily track all of their applications in one place.</p>
-
-            <p>Using this information, I created a persona that reflected the users' needs and would guide me in the next step of designing the platform.</p>
+            <p>Based on collected data, I created a persona summarizing user needs, goals, and requirements. This led to the identification of five key user requirements that guided my project design. These requirements evolved significantly through ongoing user collaboration and feedback, ultimately reshaping the project's direction.</p>
 
             <div class="image-wrapper">
                 <div class="image-container persona">
-                    <img src="graphics/casestudy3/alexchen.png" alt="Alex Chen Persona">
-                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy3/alexchen.png')">
+                    <img src="graphics/casestudy2/persona.png" alt="User Persona">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy2/persona.png')">
                 </div>
             </div>
 
-            <h2>Brainstorming</h2>
+            <h2>Creating a Design Concept</h2>
+
+            <p>Initially, my design concepts drew heavy inspiration from Discord's UI, while incorporating additional features to meet user needs. However, user feedback revealed that organizing and accessing information (tasks, roles, DAOs, and notifications) was a more pressing need than basic communication functionality. Addressing this would enable contributors to coordinate more effectively and dedicate more energy to meaningful DAO governance discussions.</p>
 
             <div class="image-wrapper">
                 <div class="image-container">
-                    <img src="graphics/casestudy3/sketch1.png" alt="Design Sketch 1">
-                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy3/sketch1.png')">
+                    <img src="graphics/casestudy2/sketch1.png" alt="Initial Design Sketch">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy2/sketch1.png')">
                 </div>
             </div>
 
-            <h3>Responsiveness Score</h3>
-
-            <p>While I did use existing job sites such as Indeed and Glassdoor as inspiration for my design, I made some adjustments of my own using the persona I had created. To help fulfill the user need for clear and timely communication from employers, I added a "responsiveness score" for each employer listed on the website, indicating how effectively and efficiently they communicated with applicants. This feature would not only notify applicants of how soon they could expect recruiters to respond to them but would also encourage employers to respond to job seekers more quickly so their score would look better, serving as a form of social reinforcement. I also included a page specifically for messages between applicants and recruiters and added links throughout different parts of the website to encourage users to reach out to recruiters.</p>
-
-            <h3>Application Tracking Dashboard</h3>
-
-            <p>To help users with tracking application status, I added an applications page showing all the applications a user had applied to and the phase the application was currently in, including estimated dates of when each phase would be expected to be completed. This feature was designed to address users' anxiety when it came to waiting for a response on an application and gave them a sense of assurance throughout the job searching process.</p>
-
-            <h3>Resource Library</h3>
-
-            <p>In regard to the need for resources and learning materials, I included a dedicated learning and resource library containing videos, documents, and templates to guide and inform job seekers throughout each step of the process and help them succeed with finding work.</p>
+            <p>In light of this, I pivoted my product from a communications platform to a productivity dashboard. I designed tools for displaying and checking notifications, completing tasks, and organizing the DAOs that contributors were a part of. I also included in my design a widget that would allow users to plug custom built tools, introducing composability to accommodate the diverse needs of different organizations. However for this study, I did not expound on this feature and instead focused on essential functions required for effective DAO contribution.</p>
 
             <div class="image-wrapper">
                 <div class="image-container">
-                    <img src="graphics/casestudy3/sketch2.png" alt="Design Sketch 2">
-                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy3/sketch2.png')">
+                    <img src="graphics/casestudy2/sketch2.png" alt="Design Sketch 2">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy2/sketch2.png')">
                 </div>
             </div>
 
-            <h2>Design</h2>
+            <div class="image-wrapper">
+                <div class="image-container">
+                    <img src="graphics/casestudy2/sketch3.png" alt="Design Sketch 3">
+                    <img src="graphics/expand_button.svg" alt="Expand" class="expand-button" onclick="expandImage('graphics/casestudy2/sketch3.png')">
+                </div>
+            </div>
 
-            <p>With these sketches, I created a rudimentary interactive wireframe in Figma of how the website would look and function.</p>
+            <p>The DAO tooling landscape is notably fragmented, with numerous platforms and applications scattered across different spaces. My design aimed to address this by providing centralized access to critical tools.</p>
 
-            <p>Due to the project timeline, I conducted limited usability testing with one participant who navigated the prototype successfully. In a real-world scenario, I would conduct usability testing with at least 5-8 participants to identify usability issues and validate design decisions. Specifically, I would test:</p>
+            <p>After establishing the task hierarchy and creating storyboards, I refined my design for prototype development.</p>
 
-            <p>• Whether the responsiveness score feature is immediately understood</p>
-            <p>• If users can easily navigate between job listings and their applications dashboard</p>
-            <p>• How intuitive the messaging interface is for contacting recruiters</p>
-            <p>• Whether the resource library is discoverable and valuable</p>
+            <h2>Prototype and Usability Testing</h2>
 
-            <p>This represents a key area for improvement in future iterations, as usability testing is essential for validating assumptions and uncovering issues that may not be apparent during the design phase.</p>
+            <p>I developed an initial prototype in Balsamiq before creating the final version in Figma. While the prototype was sufficient for usability testing, the interface needs refinement - specifically, the oversized text and UI elements create an unwieldy experience, and the color scheme requires improvement. These issues will be addressed in future iterations.</p>
 
             <div class="figma-embed">
-                <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" src="https://embed.figma.com/proto/QVsD4KmjhbO024mjkOE9hi/Job-Site-Wireframe?node-id=1-2&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&embed-host=share" allowfullscreen></iframe>
+                <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" src="https://embed.figma.com/proto/WpiGWbBpcgGgox0xCVRbLA/DAO-platform?node-id=1-3&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A3&embed-host=share" allowfullscreen></iframe>
             </div>
 
-            <p>While I am happy with the final prototype, I feel like the result was a bit too similar to existing job search sites. Platforms like Glassdoor already have a learning resource site similar to what I included in my product, albeit it is not as visible on Glassdoor. Although my product includes features that drive and encourage better communication and engagement from recruiters, other products offer personal services to help users improve their resumes and increase their chances of getting better employment.</p>
+            <p>The usability testing was designed to measure how quickly and easily users could locate specific information and how well they can learn the interface layout, addressing the primary user need for efficient information access.</p>
 
-            <p>In retrospect, I wonder if there was something else I could have implemented that both addressed the user need for better communication while also helping it stand out from existing alternatives. This is something I will need to explore further in future iterations.</p>
+            <p>I recruited a participant from the initial user research phase, streamlining the recruitment process and making scheduling easier.</p>
 
-            <p>Due to time constraints, I did not design my product for mobile platforms. My target users also commonly utilized job searching websites via desktop. Regardless, I recognize that mobile is a popular platform of choice for many users and will be something I will need to include in future iterations as well.</p>
+            <p>The prototype performed well in efficiency and learnability metrics, with task completion times under 15 seconds. While all tasks were completed successfully on the first attempt, the notification page's "read all" function caused some confusion due to unclear iconography. I resolved this by adding explanatory text beside the icon.</p>
 
-            <h2>Impact & Success Metrics</h2>
-
-            <p>If this platform were implemented, I would measure success through the following metrics:</p>
-
-            <h3>User Satisfaction & Engagement</h3>
-
-            <p>• Net Promoter Score (NPS) for overall platform experience</p>
-            <p>• Percentage of users who actively use the messaging feature to contact recruiters</p>
-            <p>• Resource library engagement rate (views, downloads, time spent)</p>
-
-            <h3>Communication Effectiveness</h3>
-
-            <p>• Average employer response time compared to industry benchmarks</p>
-            <p>• Percentage of applications that receive any response (vs. being ghosted)</p>
-            <p>• User-reported anxiety levels before and after using the application tracking feature</p>
-
-            <h3>Platform Efficiency</h3>
-
-            <p>• Time to complete job application from search to submission</p>
-            <p>• Application completion rate (started vs. submitted)</p>
-            <p>• Return user rate indicating the platform meets ongoing job search needs</p>
-
-            <p>The responsiveness score's success would specifically be measured by tracking whether employers with lower scores improve their communication patterns over time, validating my social reinforcement hypothesis.</p>
+            <p>During the interview, the user suggested implementing AI automation for notification management and task creation. This led to my decision to incorporate an automated AI feed in the next iteration, further reducing user friction.</p>
 
             <h2>Conclusion</h2>
 
-            <p>This project helped me recognize the importance of grounding design decisions in user research. The responsiveness score feature, my most innovative solution, emerged directly from listening to users' frustrations about communication gaps, not from assumptions about what they needed.</p>
+            <p>This project began as an investigation into DAOs' reliance on Discord and an attempt to create a decentralized alternative. However, user research revealed that the community's needs extended beyond basic communication. Users primarily sought quick, efficient access to relevant information, using Discord mainly due to a lack of alternatives. For DAOs to succeed, they require an integrated platform combining productivity and communication tools that minimizes cognitive load and delivers targeted information.</p>
 
-            <p>If I were to do this project again, I would prioritize three things: conducting research with a more diverse user group to capture a wider range of job-seeking experiences, conducting comprehensive usability testing earlier in the design phase, and brainstorming other alternative solutions that address the communication problem in ways existing platforms haven't attempted.</p>
+            <p>The research also highlighted the crucial role of artificial intelligence in DAO interfaces. AI integration will be essential for achieving true autonomy, both in task automation and independent organizational operation. These insights will guide my future research with designing DAO products.</p>
 
-            <p>The most valuable lesson from this project was recognizing that good UX design isn't about adding more features; it's about solving the right problems in meaningful ways. While my platform shares similarities with existing solutions, the responsiveness score represents a shift toward holding employers accountable for communication, which current platforms fail to address. Moving forward, I will continue refining this approach and exploring how design can create more transparent, respectful experiences for users.</p>
+            <p>Currently, I am conducting user research for Farcastle, a project focused on developing DAO tools within the Farcaster protocol. This include the development and use of "frames", an innovative and groundbreaking feature that enables users to build and utilize apps within their posts. I will use the insights gained from this study to help inform Farcastle's tool design and strategic direction.</p>
         </section>
 
         <footer>
