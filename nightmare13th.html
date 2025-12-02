@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Voltaire&family=Kreon:wght@400;700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: left;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: white;
+            background-color: #0A0A0A;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 230px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .fixed-header-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(to bottom, #0A0A0A 0%, #0A0A0A 70%, rgba(10, 10, 10, 0.9) 80%, rgba(10, 10, 10, 0.6) 90%, rgba(10, 10, 10, 0.2) 95%, rgba(10, 10, 10, 0) 100%);
+            padding-bottom: 10px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .hamburger {
+            display: none;
+            position: absolute;
+            left: 30px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .hamburger svg {
+            width: 40px;
+            height: 35px;
+        }
+
+        .header-logo {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.1);
+            filter: brightness(0) invert(1) drop-shadow(0 0 10px #ffffff) !important;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        
+        nav {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding: 10px 0;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: inline-flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Voltaire', sans-serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.45em;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ccc;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-nav.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .mobile-nav li {
+            text-align: center;
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Voltaire', sans-serif;
+            font-size: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.45em;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            color: #ccc;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 100px;
+            margin-top: 100px;
+        }
+        
+        .about-text {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .about-text h2 {
+            font-family: 'Voltaire', sans-serif;
+            font-size: 50px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+        }
+        
+        .about-text p {
+            font-family: 'Geologica', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .about-image {
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .about-image .frame {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-image .portrait {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .experience-education {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .experience-education > div {
+            flex: 1;
+        }
+        
+        .experience-education h2 {
+            font-family: 'Voltaire', sans-serif;
+            font-size: 50px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 0.10em;
+            text-align: left;
+            text-transform: uppercase;
+        }
+        
+        .experience-education ul {
+            list-style-type: none;
+            margin-left: 0;
+            position: relative;
+        }
+        
+        .experience-education ul::before {
+            content: '';
+            position: absolute;
+            left: 1px;
+            top: 15px;
+            height: calc(100% - 120px);
+            width: 6px;
+            border-left: 8px dotted #555;
+        }
+        
+        .experience-education li {
+            margin-bottom: 30px;
+            font-family: 'Kreon', serif;
+            font-size: 30px;
+            font-weight: 100;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .experience-education li::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 15px;
+            width: .75em;
+            height: .75em;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        .experience-education li .subtitle {
+            color: #888888;
+            display: block;
+            font-size: 24px;
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .contact-header h2 {
+            font-family: 'Voltaire', sans-serif;
+            font-size: 50px;
+            font-weight: 300;
+            letter-spacing: 0.45em;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .mail-left, .mail-right {
+            width: 150px;
+            height: auto;
+            filter: drop-shadow(0 0 5px #33FF00) drop-shadow(0 0 10px #33FF00);
+        }
+
+        .mail-left {
+            transform: rotate(-30deg);
+        }
+
+        .mail-right {
+            transform: rotate(30deg);
+        }
+
+        .description-text {
+            font-family: 'Geologica', sans-serif;
+            font-size: 18px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-grid img:hover {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 980px) {
+            .container {
+                max-width: none;
+                width: 100%;
+                padding: 20px;
+                padding-top: 140px;
+            }
+
+            .fixed-header-nav {
+                width: 100%;
+                padding: 0;
+                padding-bottom: 10px;
+            }
+
+            header {
+                width: 100%;
+                padding: 10px 20px;
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                left: 30px;
+            }
+
+            .hamburger svg {
+                width: 40px;
+                height: 35px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 770px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-image {
+                align-self: center;
+            }
+
+            .experience-education {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .experience-education h2 {
+                text-align: center;
+            }
+
+            .contact-header {
+                margin-bottom: 50px;
+                gap: 20px;
+            }
+
+            .contact-header h2 {
+                font-size: 25px;
+            }
+
+            .mail-left, .mail-right {
+                width: 60px;
+            }
+
+            .social-icons {
+                gap: 25px;
+            }
+
+            .social-icon {
+                width: 100px;
+                height: 140px;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: auto;
+            padding-top: 40px;
+            border-top: 3px solid transparent;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, rgba(85, 85, 85, 0), #555, rgba(85, 85, 85, 0));
+        }
+        
+        footer p {
+            font-family: 'Voltaire', sans-serif;
+            letter-spacing: 0.45em;
+            text-align: center;
+            opacity: 0.5;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="fixed-header-nav">
+        <header>
+            <div class="hamburger" onclick="toggleMobileNav()">
+                <svg width="50" height="42" viewBox="0 0 50 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2H48" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M2 21.5H48" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="3.5" y1="40" x2="46.5" y2="40" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <a href="index.html">
+                <img src="graphics/JO_neon.svg" alt="JO" class="header-logo" style="max-width: auto; height: 70px; margin-bottom: 10px; margin-top: 10px; filter: brightness(0) invert(1); cursor: pointer;">
+            </a>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html" onclick="toggleMobileNav()">Home</a></li>
+                <li><a href="about.html" onclick="toggleMobileNav()">About</a></li>
+                <li><a href="work.html" onclick="toggleMobileNav()">Work</a></li>
+                <li><a href="contact.html" onclick="toggleMobileNav()">Contact</a></li>
+            </ul>
+        </div>
+        
+        <section class="section">
+            <div class="contact-header">
+                <h2>Nightmare on 13th</h2>
+            </div>
+            <div class="description-text">
+                <p>Working as a scare actor at Utah's legendary haunted house, I had the opportunity to bring nightmares to life. From designing terrifying characters to perfecting the art of the scare, this experience pushed my creative boundaries and taught me the power of immersive storytelling and atmosphere.</p>
+            </div>
+            <div class="photo-grid">
+                <img src="graphics/haunt/20240913_184413.jpg" alt="A Demonic Presence">
+                <img src="graphics/haunt/20240920_181108.jpg" alt="Clowning around">
+                <img src="graphics/haunt/20240927_182336.jpg" alt="Baby Face">
+                <img src="graphics/haunt/20241004_183134.jpg" alt="Going Insane">
+                <img src="graphics/haunt/20241019_180524.jpg" alt="I Told The Witch Doctor">
+                <img src="graphics/haunt/20241025_180316.jpg" alt="Yo Ho Ho and A Bottle o' Rum">
+                <img src="graphics/haunt/20241030_235105.jpg" alt="Halloween night">
+                <img src="graphics/haunt/IMG_1065.jpg" alt="The Doctor Will See You Now">
+                <img src="graphics/haunt/20250613_175954.jpg" alt="Summer Show">
+                <img src="graphics/haunt/20250927_180407.jpg" alt="Slasher">
+                <img src="graphics/haunt/20251025_180157.jpg" alt="Dressing Room">
+                <img src="graphics/haunt/20250926_184903.jpg" alt="Brutus the Crocodile 2">
+                <img src="graphics/haunt/20250926_185028.jpg" alt="Brutus the Crocodile">
+                <img src="graphics/haunt/20251025_181528.jpg" alt="Slasher BFFs">
+                <img src="graphics/haunt/20251101_014718.jpg" alt="Team Photo">
+                <img src="graphics/haunt/20241101_012517_02_saved.jpg" alt="Team photo 2">
+                <img src="graphics/haunt/13th-2025.jpg" alt="Nightmare on 13th 2025">
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 Jamison Orten. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Close mobile nav when clicking outside
+        const mobileNav = document.getElementById('mobileNav');
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
